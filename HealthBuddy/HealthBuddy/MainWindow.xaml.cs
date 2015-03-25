@@ -139,23 +139,23 @@ namespace HealthBuddy
                 Menu menu = new Menu();
                 var context = new HealthBuddyContext();
 
-                Dessert appetiser = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");
+                Dessert tiramissu = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");
                 
-                menu._Dessert = appetiser;
+                menu._Dessert = tiramissu;
                 foreach (var typeMeal in selectedTypeMeals)
                 {
                     var currentType = ("_" + typeMeal);
 
                     Name_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Name").GetValue(appetiser, null));
+                                                        .GetType().GetProperty("Name").GetValue(tiramissu, null));
                     Calories_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Calories").GetValue(appetiser, null));
+                                                        .GetType().GetProperty("Calories").GetValue(tiramissu, null));
                     Carbs_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Carbohydrates").GetValue(appetiser, null));
+                                                        .GetType().GetProperty("Carbohydrates").GetValue(tiramissu, null));
                     Proteins_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Proteins").GetValue(appetiser, null));
+                                                        .GetType().GetProperty("Proteins").GetValue(tiramissu, null));
                     Lipids_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Fats").GetValue(appetiser, null));                   
+                                                        .GetType().GetProperty("Fats").GetValue(tiramissu, null));                   
                 }
             }
             catch (Exception ex)

@@ -27,10 +27,7 @@ namespace HealthBuddy
         public MainWindow()
         {
             var context = new HealthBuddyContext();
-            Database.SetInitializer(new MyMigration());
-                     
-            MessageBox.Show(context.Desserts.Count().ToString());           
-
+            Database.SetInitializer(new MyMigration());            
             InitializeComponent();
         }
         #region Get User's info
@@ -90,6 +87,7 @@ namespace HealthBuddy
 
         private void ChoosenPurpose_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            // TODO: Do this on group meeting 
             throw new NotImplementedException("Still not implemented, do not choose purpose for the moment :) ");
             User.UserPurpose selectedColor = (User.UserPurpose)(choosenPurpose.SelectedItem as PropertyInfo).GetValue(null, null);
             user.Purpose = selectedColor;
@@ -115,7 +113,6 @@ namespace HealthBuddy
             selectedIngrediants = childs.Select(x => x.Content).ToList();
 
             FoodSelectionWindow.Visibility = System.Windows.Visibility.Hidden;
-            //Profile.Visibility = System.Windows.Visibility.Visible;
             Menu.Visibility = System.Windows.Visibility.Visible;
 
             WeightProfile.Text = user.Weight.ToString();
@@ -132,30 +129,45 @@ namespace HealthBuddy
 
             childs = childs.Where(x => x.IsChecked == true).ToList();
             selectedTypeMeals = childs.Select(x => x.Content).ToList();
+            
 
-            //Debug - assuming the menu is ready and contains only appetiser
+            // DEBUG: assuming the menu is ready and contains only Dessert and Salad
+
+            // TODO: Set Loading giff while the data is loading :)))
             try
             {
                 Menu menu = new Menu();
                 var context = new HealthBuddyContext();
 
-                Dessert tiramissu = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");
-                
+               //INFO:  We will know what kind of meal to search from <selectedTypeMeals>
+                Dessert tiramissu = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");// TODO: get from Simplex
                 menu._Dessert = tiramissu;
+
+                Salad salad = context.Salads.FirstOrDefault(x => x.Name == "TestSalad"); //TODO: get from Simplex               
+                menu._Salad = salad; 
+                
+                var listOfMealsFromMenu = new List<Meal>();
+               
+                listOfMealsFromMenu.Add(salad);
+                listOfMealsFromMenu.Add(tiramissu);
+
+                var index = 0;
                 foreach (var typeMeal in selectedTypeMeals)
                 {
                     var currentType = ("_" + typeMeal);
+                    //var index = selectedTypeMeals.IndexOf(typeMeal);
 
                     Name_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Name").GetValue(tiramissu, null));
+                                                        .GetType().GetProperty("Name").GetValue(listOfMealsFromMenu[index], null));
                     Calories_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Calories").GetValue(tiramissu, null));
+                                                        .GetType().GetProperty("Calories").GetValue(listOfMealsFromMenu[index], null));
                     Carbs_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Carbohydrates").GetValue(tiramissu, null));
+                                                        .GetType().GetProperty("Carbohydrates").GetValue(listOfMealsFromMenu[index], null));
                     Proteins_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Proteins").GetValue(tiramissu, null));
+                                                        .GetType().GetProperty("Proteins").GetValue(listOfMealsFromMenu[index], null));
                     Lipids_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Fats").GetValue(tiramissu, null));                   
+                                                        .GetType().GetProperty("Fats").GetValue(listOfMealsFromMenu[index], null));
+                   index++;
                 }
             }
             catch (Exception ex)

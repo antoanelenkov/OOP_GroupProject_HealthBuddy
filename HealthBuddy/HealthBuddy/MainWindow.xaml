@@ -54,76 +54,14 @@
             <MenuItem Header="_Profile" 
                       Name="Menu_Profile"
                       Click="Menu_Profile_Click"/>
-            <MenuItem Header="_Menu"
+            <MenuItem Header="_MyMenu"
                       Name="Menu_MyMenu"
                      Click="Menu_MyMenu_Click" />
+            <MenuItem Header="_Exercises" />
             <MenuItem Header="_Calendar" />
-            <MenuItem Header="_Window" />
             <MenuItem Header="_Help" />
         </Menu>
-        <Canvas Name="Menu" Visibility="Hidden"
-                Background="Coral"
-                 Margin="0,32,0,0">
-            <StackPanel Name="MenuInfo"
-                        Orientation="Horizontal"
-                       Background="YellowGreen"
-                       Width="337"
-                       Height="163" Canvas.Left="10">
-                <TextBlock Name="Name_MenuInfo" 
-                           Text="Name"
-                           TextWrapping="Wrap"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Calories_MenuInfo" 
-                           Text="Calories"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Carbs_MenuInfo" 
-                           Text="Carbs"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Proteins_MenuInfo" 
-                           Text="Proteins"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Lipids_MenuInfo" 
-                           Text="Lipids"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Style="{StaticResource MenuInfoTextBlock}"/>
-            </StackPanel>
-            <WrapPanel Name="TypeMealsCheckBox"
-                       Background="Coral"
-                       Width="272" Canvas.Left="10" Canvas.Top="171" Height="66"
-                       >
 
-                <CheckBox Content="Breakfast"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Soup"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Appetiser"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Salad"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Main"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Dessert"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Liquid"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-
-
-            </WrapPanel>
-            <Calendar Canvas.Right="10" 
-                      Width="178"
-                      Background="YellowGreen" 
-                      Height="163"
-                      Canvas.Left="354"/>
-            <Button Content="Generate Menu"
-                    Name="Generate_Menu_Button"
-                    Background="YellowGreen"
-                    Canvas.Left="261"
-                    Canvas.Top="168" 
-                    Width="90"
-                    Click="Generate_Menu_Button_Click"/>
-
-        </Canvas>
         <Canvas Name="StartWindow" 
                 Visibility="Visible"
                 Background="BlueViolet">
@@ -292,6 +230,90 @@
                    Canvas.Top="80" 
                    Width="128"
                    />
+
+        </Canvas>
+        <Canvas Name="Menu" Visibility="Hidden"
+                Background="Coral"
+                 Margin="0,32,0,0">
+            <StackPanel Name="MenuInfo"
+                        Orientation="Horizontal"
+                       Background="YellowGreen"
+                       Width="337"
+                       Height="163" Canvas.Left="10">
+                <TextBlock Name="Name_MenuInfo" 
+                           Text="Name"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource MenuInfoTextBlock}"/>
+                <TextBlock Name="Calories_MenuInfo" 
+                           Text="Calories"
+                           Style="{StaticResource MenuInfoTextBlock}"/>
+                <TextBlock Name="Carbs_MenuInfo" 
+                           Text="Carbs"
+                           Style="{StaticResource MenuInfoTextBlock}"/>
+                <TextBlock Name="Proteins_MenuInfo" 
+                           Text="Proteins"
+                           Style="{StaticResource MenuInfoTextBlock}"/>
+                <TextBlock Name="Lipids_MenuInfo" 
+                           Text="Lipids"
+                           Style="{StaticResource MenuInfoTextBlock}"/>
+                <TextBlock Style="{StaticResource MenuInfoTextBlock}"/>
+                <TextBlock Style="{StaticResource MenuInfoTextBlock}"/>
+            </StackPanel>
+            <WrapPanel Name="TypeMealsCheckBox"
+                       Background="Coral"
+                       Width="272" Canvas.Left="10" Canvas.Top="171" Height="66"
+                       >
+
+                <CheckBox Content="Breakfast"
+                          Style="{StaticResource TypeMealCheckBox}"/>
+                <CheckBox Content="Soup"
+                          Style="{StaticResource TypeMealCheckBox}"/>
+                <CheckBox Content="Appetiser"
+                          Style="{StaticResource TypeMealCheckBox}"/>
+                <CheckBox Content="Salad"
+                          Style="{StaticResource TypeMealCheckBox}"/>
+                <CheckBox Content="Main"
+                          Style="{StaticResource TypeMealCheckBox}"/>
+                <CheckBox Content="Dessert"
+                          Style="{StaticResource TypeMealCheckBox}"/>
+                <CheckBox Content="Liquid"
+                          Style="{StaticResource TypeMealCheckBox}"/>
+
+
+            </WrapPanel>
+            <Calendar Canvas.Right="10" 
+                      Width="178"
+                      Background="YellowGreen" 
+                      Height="163"
+                      Canvas.Left="354"/>
+            <Button Content="Generate Menu"
+                    Name="Generate_Menu_Button"
+                    Background="YellowGreen"
+                    Canvas.Left="261"
+                    Canvas.Top="168" 
+                    Width="90"
+                    Click="Generate_Menu_Button_Click"/>
+
+        </Canvas>
+        <Canvas Name="Exercises" Visibility="Hidden"
+                Background="Coral"
+                Margin="0,32,0,0">
+            <Canvas Name="BodyPartsStruct"
+                   Canvas.Left="42"
+                   Canvas.Top="35" 
+                   Width="223"
+                    Height="208"
+                    Background="Green">
+                <Canvas Name="shoulder"
+                        >
+
+                </Canvas>
+            </Canvas>
+            <Image Height="209" 
+                   Canvas.Left="42"
+                   Canvas.Top="35" 
+                   Width="223"
+                   Source="C:\Users\Solara\Desktop\OOP\HumanBody3.png"/>
 
         </Canvas>
     </Grid>

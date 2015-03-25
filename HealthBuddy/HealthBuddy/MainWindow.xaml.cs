@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HealthBuddy.Migrations;
+using HealthBuddy.Models;
 using System.Reflection;
 
 namespace HealthBuddy
@@ -24,10 +26,13 @@ namespace HealthBuddy
     {
         public MainWindow()
         {
-            InitializeComponent();
-            choosenPurpose.ItemsSource = typeof(User.UserPurpose).GetEnumNames().Select(x => x.Replace('_', ' '));
-        }
+            var context = new HealthBuddyContext();
+            Database.SetInitializer(new MyMigration());
+                     
+            MessageBox.Show(context.Desserts.Count().ToString());           
 
+            InitializeComponent();
+        }
         #region Get User's info
         User user = new User();
 
@@ -129,19 +134,14 @@ namespace HealthBuddy
             selectedTypeMeals = childs.Select(x => x.Content).ToList();
 
             //Debug - assuming the menu is ready and contains only appetiser
-            Menu menu = new Menu();
-            var appetiser = new Appetiser();
-            appetiser.Name = "Oriz";
-            appetiser.Calories = 100;
-            appetiser.Carbohydrates = 56;
-            appetiser.Proteins = 24;
-            appetiser.Lipids = 20;
-            appetiser.Portion_Size = 150;
-            appetiser.Indigrediants = new List<string> { "vegetables, nuts" };
-            menu._Appetiser = appetiser;
-
             try
             {
+                Menu menu = new Menu();
+                var context = new HealthBuddyContext();
+
+                Dessert appetiser = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");
+                
+                menu._Dessert = appetiser;
                 foreach (var typeMeal in selectedTypeMeals)
                 {
                     var currentType = ("_" + typeMeal);
@@ -153,9 +153,9 @@ namespace HealthBuddy
                     Carbs_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
                                                         .GetType().GetProperty("Carbohydrates").GetValue(appetiser, null));
                     Proteins_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                            .GetType().GetProperty("Proteins").GetValue(appetiser, null));
+                                                        .GetType().GetProperty("Proteins").GetValue(appetiser, null));
                     Lipids_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                            .GetType().GetProperty("Lipids").GetValue(appetiser, null));
+                                                        .GetType().GetProperty("Fats").GetValue(appetiser, null));                   
                 }
             }
             catch (Exception ex)

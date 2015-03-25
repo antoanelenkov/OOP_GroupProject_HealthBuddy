@@ -1,51 +1,87 @@
-﻿namespace HealthBuddy
+﻿namespace HealthBuddy.Models
 {
-    using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public abstract class Meal
     {
-        private double calories_per_portion;
+        private string name;
+        private decimal calories;
+        private decimal proteins;
+        private decimal carbohydrates;
+        private decimal fats;
+        private decimal portionSize;
+        private decimal caloriesPerPortion;
+        private List<string> ingredients;
 
         public Meal()
-        {
+        { 
         }
-
-        public Meal(string name, double calories, double carbs, double proteins, double lipids, double portionSize, List<string> indigredients, double portionCalories)
+        public Meal(string name, decimal calories, decimal proteins, decimal carbohydrates, decimal fats, decimal portionSize, decimal caloriesPerPortion, List<string> ingredients)
         {
             this.Name = name;
             this.Calories = calories;
-            this.Carbohydrates = carbs;
             this.Proteins = proteins;
-            this.Lipids = lipids;
+            this.Carbohydrates = carbohydrates;
+            this.Fats = fats;
             this.Portion_Size = portionSize;
-            this.Indigrediants = indigredients;
-            this.Calories_per_portion = portionCalories;
+            this.Calories_Per_Portions = caloriesPerPortion;
+            this.Ingredients = ingredients;
+        }
+        
+        [Key]
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
         }
 
-        public string Name { get; set; }
-
-        public double Calories { get; set; } //by 100g
-
-        public double Carbohydrates { get; set; } // may be class
-
-        public double Proteins { get; set; } // may be class
-
-        public double Lipids { get; set; } // may be class
-
-        public double Portion_Size { get; set; } // e.g. 150g (for 1 apple - in the DB)
-
-        public List<string> Indigrediants { get; set; }
-
-        public double Calories_per_portion
+        public decimal Calories
         {
-            get { return this.calories_per_portion; }
-            set { this.calories_per_portion = this.CalcCaloriesPerPortion(); }
+            get { return this.calories; }
+            set { this.calories = value; }
+        }
+     
+        public decimal Proteins
+        {
+            get { return this.proteins; }
+            set { this.proteins = value; }
         }
 
-        private double CalcCaloriesPerPortion()
+        [Range(0, 100001)]
+        public decimal Carbohydrates
         {
-            return (this.Calories * this.Portion_Size) / 100;
+            get { return this.carbohydrates; }
+            set { this.carbohydrates = value; }
+        }
+
+        public decimal Fats
+        {
+            get { return this.fats; }
+            set { this.fats = value; }
+        }
+
+        public decimal Portion_Size
+        {
+            get { return this.portionSize; }
+            set { this.portionSize = value; }
+        }
+       
+        public List<string> Ingredients
+        {
+            get { return this.ingredients; }
+            set { this.ingredients = value; }
+        }
+
+        public decimal Calories_Per_Portions
+        {
+            get { return this.caloriesPerPortion; }
+            set { this.caloriesPerPortion = this.CalcCaloriesPerPortions(); }
+        }
+
+        private decimal CalcCaloriesPerPortions()
+        {
+            return (this.Calories*this.Portion_Size)/ 100m;
         }
     }
 }

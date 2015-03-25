@@ -1,8 +1,9 @@
 ﻿namespace HealthBuddy
 {
+    using HealthBuddy.Models;
     using System.Collections.Generic;
 
-   public class Menu
+    public class Menu
     {
         public Appetiser _Appetiser { get; set; }
 

@@ -259,7 +259,7 @@
                            Text="Lipids"
                            Style="{StaticResource MenuInfoTextBlock}"/>
                 <TextBlock Style="{StaticResource MenuInfoTextBlock}"/>
-               
+
             </StackPanel>
             <WrapPanel Name="TypeMealsCheckBox"
                        Background="Coral"
@@ -291,10 +291,10 @@
             <Button Content="Generate Menu"
                     Name="Generate_Menu_Button"
                     Background="YellowGreen"
-                    Canvas.Left="261"
-                    Canvas.Top="168" 
+                    Canvas.Left="272"
+                    Canvas.Top="171" 
                     Width="90"
-                    Click="Generate_Menu_Button_Click"/>
+                    Click="Generate_Menu_Button_Click" RenderTransformOrigin="0.267,-0.591"/>
 
         </Canvas>
         <Canvas Name="Exercises" Visibility="Hidden"
@@ -315,7 +315,7 @@
                    Canvas.Left="42"
                    Canvas.Top="35" 
                    Width="223"
-                   Source="C:\Users\Solara\Desktop\OOP\HumanBody3.png"/>
+                   Source="MuscleMan.jpg"/>
 
         </Canvas>
     </Grid>

@@ -13,9 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Reflection;
 using HealthBuddy.Migrations;
 using HealthBuddy.Models;
-using System.Reflection;
+using HealthBuddy.Calculator;
 
 namespace HealthBuddy
 {
@@ -31,7 +32,7 @@ namespace HealthBuddy
             InitializeComponent();
         }
         #region Get User's info
-        User user = new User();
+        User user = new User("Maria",50,UserGender.Female,40,200,UserPurpose.Keep_Weight,new List<string>());
 
         private void UserTextBoxName_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -77,19 +78,19 @@ namespace HealthBuddy
 
         private void Female_Click(object sender, RoutedEventArgs e)
         {
-            user.Gender = User.UserGender.Female;
+            user.Gender = UserGender.Female;
         }
 
         private void Male_Click(object sender, RoutedEventArgs e)
         {
-            user.Gender = User.UserGender.Male;
+            user.Gender = UserGender.Male;
         }
 
         private void ChoosenPurpose_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // TODO: Do this on group meeting 
             throw new NotImplementedException("Still not implemented, do not choose purpose for the moment :) ");
-            User.UserPurpose selectedColor = (User.UserPurpose)(choosenPurpose.SelectedItem as PropertyInfo).GetValue(null, null);
+            UserPurpose selectedColor = (UserPurpose)(choosenPurpose.SelectedItem as PropertyInfo).GetValue(null, null);
             user.Purpose = selectedColor;
             // test.Text = user.Purpose.ToString();
         }
@@ -143,12 +144,12 @@ namespace HealthBuddy
                 Dessert tiramissu = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");// TODO: get from Simplex
                 menu._Dessert = tiramissu;
 
-                Salad salad = context.Salads.FirstOrDefault(x => x.Name == "TestSalad"); //TODO: get from Simplex               
-                menu._Salad = salad; 
+                //Salad salad = context.Salads.FirstOrDefault(x => x.Name == "TestSalad"); //TODO: get from Simplex               
+                //menu._Salad = salad; 
                 
                 var listOfMealsFromMenu = new List<Meal>();
                
-                listOfMealsFromMenu.Add(salad);
+                //listOfMealsFromMenu.Add(salad);
                 listOfMealsFromMenu.Add(tiramissu);
 
                 var index = 0;
@@ -169,6 +170,35 @@ namespace HealthBuddy
                                                         .GetType().GetProperty("Fats").GetValue(listOfMealsFromMenu[index], null));
                    index++;
                 }
+
+
+
+
+
+
+
+
+
+                //TEST
+                User person1 = new User("Antoan", 24, UserGender.Male, 78,180,UserPurpose.Loose_Weight, new List<string>());
+                MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(person1.Weight, person1.Height, person1.Age, person1.Purpose);
+                MenWaterNeedsCalculator calcWater=new MenWaterNeedsCalculator(person1.Weight,person1.Height,person1.Age);
+                int caloriesOfperson1=calcCalories.CalculateCalories();
+                double waterOfperson1 = calcWater.CalculateWaterNeeds();
+                //TEST
+
+
+
+
+
+
+
+
+
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -187,5 +217,8 @@ namespace HealthBuddy
             Profile.Visibility = System.Windows.Visibility.Hidden;
             Menu.Visibility = System.Windows.Visibility.Visible;
         }
+
+        
+
     }
 }

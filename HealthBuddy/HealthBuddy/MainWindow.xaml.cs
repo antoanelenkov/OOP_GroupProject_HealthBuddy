@@ -187,7 +187,16 @@ namespace HealthBuddy
                 double waterOfperson1 = calcWater.CalculateWaterNeeds();
                 //TEST
 
-
+                //Simplex solver test:
+                Meal meal__ = new Dessert("Tiramissu", 200m, 150m, 25, 25, 150, 56, new List<string> { "nuts" });
+                List<Meal> MealList = new List<Meal>();
+                MealList.Add(meal__);
+                SimplexMealGenerator gen = new SimplexMealGenerator(MealList);
+                gen.Generate();
+                for (int i = 0; i < gen.Meals.Count; i++)
+                {
+                    //if(gen.MealPortions[i]!=0) Console.WriteLine("{0}:{1}", gen.meals[i], gen.MealPortions[i]);
+                }
 
 
 

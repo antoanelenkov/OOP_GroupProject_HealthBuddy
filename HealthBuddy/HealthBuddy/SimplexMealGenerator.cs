@@ -18,7 +18,7 @@ namespace HealthBuddy
         private int proteins;
         private int carbohydrates;
         private int fats;
-        SimplexMealGenerator(List<Meal> Meals, int Calories = 0, int Proteins = 0, int Carbohydrates = 0, int Fats = 0)
+        public SimplexMealGenerator(List<Meal> Meals, int Calories = 0, int Proteins = 0, int Carbohydrates = 0, int Fats = 0)
         {
             this.meals = Meals;
             calories = Calories;

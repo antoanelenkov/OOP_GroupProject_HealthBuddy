@@ -1,0 +1,108 @@
+turkey breast,112,20,0,3.6,150,168.6,meat,Main
+roast chicken with rice,141,6,17.2,5.3,300,421.5,meat  grain,Main
+ grilled chicken breast,96,21,0,1.3,200,191.4,meat,Main
+grilled chicken feet,178,16.5,0.2,12.4,200,356.8,meat,Main
+grilled chicken liver,143,21,0.9,6.2,200,42,meat,Main
+grilled beef steak,142,23,0,5.6,200,284.8,meat,Main
+roast beef lunchmeat,119,22,1,3,200,238,meat,Main
+beef meatloaf,210,16,9.5,12,300,630,meat,Main
+roast beef heart,149,25.6,0.1,5.1,250,371.75,meat,Main
+fried pork bacon ,286,22,0,22,100,286,meat,Main
+roast pork sausages,363,21,0,31,150,544.5,meat,Main
+roast pork tongue,260,20,0,20,200,520,meat,Main
+grilled pork ribs,300,20,10,20,150,450,meat,Main
+grilled pork steak with BBQ saus,260,20,0,20,200,520,meat,Main
+roast lamb leg,190,22,0,11.3,250,474.25,meat,Main
+breast lamb chops,416,19.5,0,37.5,130,540.15,meat,Main
+grilled salmon,170,20,0,10,300,510,meat,Main
+grilled salmon with fried rise ,125,10,10,5,200,250,meat,Main
+cooked haddock,101,23,0,1,200,202,meat,Main
+smoked haddock,119,27.4,0,1,200,237.2,meat,Main
+smoked carp,164,24,0,7.5,200,327,meat,Main
+cooked carp,135,19,0,6.5,200,269,meat,Main
+medium boiled egg,156,14,1.2,10.6,50,78.1,milk,Main
+medium tomato,25,1.1,4.5,0.3,123,30.873,vegetable,Main
+half cucumber ,17,0.6,3.5,0.1,150,25.95,vegetable,Main
+baked sweet potato,101,2.2,22.5,0.2,150,150.9,vegetable,Main
+baked potato,127,3.2,28,0.2,270,341.82,vegetable,Main
+almonds,644,22.9,23.4,51,50,322.1,nuts,Main
+walnuts,615,15.2,13.7,55.5,50,307.55,nuts,Main
+hazelnuts,717,15.2,17.8,65,50,358.5,nuts,Main
+cashew,576,18,27,44,50,288,nuts,Main
+walnuts,673,15,7,65,50,336.5,nuts,Main
+peanuts,573,26,7,49,50,286.5,nuts,Main
+sunflower seeds,571,22.8,8.3,49.6,50,285.4,nuts,Main
+wheat bread,244,7.1,51.4,1.1,50,121.95,grain,Main
+rye bread,231,6.8,48.3,1.2,50,115.6,grain,Main
+brown bread,234,8,46.6,1.7,50,116.85,grain,Main
+boiled white rice,332,2.2,80,0.3,100,331.5,grain,Main
+boiled brown rice,316,2.3,75,0.8,100,316.4,grain,Main
+cooked green beans,275,2.5,65,0.5,100,274.5,legumes,Main
+cooked brown beans,241,2.9,54,1.5,100,241.1,legumes,Main
+cooked chickpeas,145,6.5,22.5,3.2,100,144.8,legumes,Main
+cooked black beans,108,7.5,18.5,0.4,100,107.6,legumes,Main
+pasta with chicken breast,147,14,16,3,300,441,grain meat,Main
+medium boiled egg,156,14,1.2,10.6,50,78.1,milk,Breakfast
+whole milk,64,3,5,3.6,200,128.8,milk,Breakfast
+2% fat milk,50,3,5,2,200,100,milk,Breakfast
+0.1% fat milk,33,3,5,0.1,200,65.8,milk,Breakfast
+piece of cheddar cheese(kashkaval),434,26,1.5,36,50,217,milk,Breakfast
+piece of feta cheese(sirene),296,16,4,24,50,148,milk,Breakfast
+cup of cottage cheese,103,12,3.6,4.5,210,216.09,milk,Breakfast
+medium banana,103,1.1,24,0.3,115,118.565,fruit,Breakfast
+medium orange,55,0.9,12.5,0.15,131,71.9845,fruit,Breakfast
+medium apple,59,0.3,13.9,0.2,180,105.48,fruit,Breakfast
+cup of grape,81,0.8,19,0.15,150,120.825,fruit,Breakfast
+piece of watermelon,61,0.6,14.1,0.25,290,177.045,fruit,Breakfast
+almonds,644,22.9,23.4,51,50,322.1,nuts,Breakfast
+walnuts,615,15.2,13.7,55.5,50,307.55,nuts,Breakfast
+hazelnuts,717,15.2,17.8,65,50,358.5,nuts,Breakfast
+cashew,576,18,27,44,50,288,nuts,Breakfast
+walnuts,673,15,7,65,50,336.5,nuts,Breakfast
+peanuts,573,26,7,49,50,286.5,nuts,Breakfast
+sunflower seeds,571,22.8,8.3,49.6,50,285.4,nuts,Breakfast
+wheat bread,244,7.1,51.4,1.1,50,121.95,grain,Breakfast
+rye bread,231,6.8,48.3,1.2,50,115.6,grain,Breakfast
+brown bread,234,8,46.6,1.7,50,116.85,grain,Breakfast
+bean soup,72,4,10,1.8,350,252.7,legumes,Soup
+pea soup,75,4.4,8.9,2.4,350,261.8,legumes,Soup
+mushroom soup,27,1.3,1.3,1.8,350,93.1,vegetables,Soup
+tomato soup,30,1.3,1.8,1.9,350,103.25,vegetables,Soup
+tomato soup with pasta,35,1.5,3.3,1.8,350,123.9,vegetables grain,Soup
+vegetable soup,48,1.7,6.2,1.8,350,167.3,vegetables,Soup
+potato soup,54,1.3,9.5,1.2,350,189,vegetables,Soup
+fruit soup with apples,49,0.1,11.8,0.1,350,169.75,fruits,Soup
+fish soup ,45,3.4,5.5,1,350,156.1,fish,Soup
+spanich soup,43,2.2,6.6,0.9,350,151.55,vegetables,Soup
+green beans soup,68,3.2,11.2,1.2,350,239.4,beans,Soup
+shkembe soup,84,16,0,2.2,350,293.3,meat,Soup
+whole milk,64,3,5,3.6,200,128.8,milk,Dessert
+2% fat milk,50,3,5,2,200,100,milk,Dessert
+0.1% fat milk,33,3,5,0.1,200,65.8,milk,Dessert
+cup of cottage cheese,103,12,3.6,4.5,210,216.09,milk,Dessert
+medium banana,103,1.1,24,0.3,115,118.565,fruit,Dessert
+medium orange,55,0.9,12.5,0.15,131,71.9845,fruit,Dessert
+medium apple,59,0.3,13.9,0.2,180,105.48,fruit,Dessert
+cup of grape,81,0.8,19,0.15,150,120.825,fruit,Dessert
+piece of watermelon,61,0.6,14.1,0.25,290,177.045,fruit,Dessert
+almond cake,310,8.5,65.5,1.6,130,403.52,nuts sweet milk,Dessert
+cacao bisquits,444,6.1,51.4,23.8,130,577.46,sweet grain,Dessert
+bisquit cake with fruits,438,5.6,58.8,20,130,568.88,sweet grain milk,Dessert
+cake with nuts and dry fruits,398,6.4,53.5,17.6,130,517.4,sweet grain nuts fruits,Dessert
+cheesecake,335,13.9,39.7,13.4,130,435.5,milk sweet,Dessert
+tiramissu,385,5,35,25,150,577.5,milk sweet,Dessert
+strawberry with cream,132,1.1,8.4,10.4,130,171.08,fruits milk,Dessert
+cup of orange juice,46,0.6,10.2,0.3,250,114.75,fruit,Liquid
+piece of pineapple,66,0.7,15.6,0.1,170,112.37,fruit,Liquid
+cup of pineapple juice,67,0.5,16,0.1,250,167.25,fruit,Liquid
+cup of apple juice,46,0.3,10.5,0.3,250,114.75,fruit,Liquid
+piece of cheddar cheese(kashkaval),434,26,1.5,36,50,217,milk,Appetiser
+piece of feta cheese(sirene),296,16,4,24,50,148,milk,Appetiser
+cup of cottage cheese,103,12,3.6,4.5,210,216.09,milk,Appetiser
+almonds,644,22.9,23.4,51,50,322.1,nuts,Appetiser
+walnuts,615,15.2,13.7,55.5,50,307.55,nuts,Appetiser
+hazelnuts,717,15.2,17.8,65,50,358.5,nuts,Appetiser
+cashew,576,18,27,44,50,288,nuts,Appetiser
+walnuts,673,15,7,65,50,336.5,nuts,Appetiser
+peanuts,573,26,7,49,50,286.5,nuts,Appetiser
+sunflower seeds,571,22.8,8.3,49.6,50,285.4,nuts,Appetiser

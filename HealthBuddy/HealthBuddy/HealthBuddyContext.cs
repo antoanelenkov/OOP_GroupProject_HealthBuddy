@@ -9,6 +9,7 @@ namespace HealthBuddy
 
     public class HealthBuddyContext : DbContext
     {
+        
         public HealthBuddyContext()
             : base("HealthBuddyContext")
         {

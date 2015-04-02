@@ -1,9 +1,10 @@
 ﻿namespace HealthBuddy.Models
 {
+    using HealthBuddy.Interfaces;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public abstract class Meal
+    public  class Meal : IMeal 
     {
         private string name;
         private decimal calories;
@@ -94,6 +95,19 @@
         {
             if (first.Calories > second.Calories) return true;
             return false;
+        }
+
+
+        public static bool Filter(Meal x, List<object> unSelectedIngrediants)
+        {
+            foreach (var ingredient in unSelectedIngrediants)
+            {
+                if(x.Ingredients.Contains(ingredient.ToString().ToLower()))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

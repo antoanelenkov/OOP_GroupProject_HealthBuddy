@@ -68,7 +68,7 @@
         </Menu>
 
         <Canvas Name="StartWindow" 
-                Visibility="Hidden"
+                Visibility="Visible"
                 Background="BlueViolet">
             <TextBlock  Text="Hello Buddy,"
                    HorizontalAlignment="Left" 
@@ -314,7 +314,7 @@
                          />
 
         </Canvas>
-        <Canvas Name="Exercises" Visibility="Visible"
+        <Canvas Name="Exercises" Visibility="Hidden"
                 Background="Coral"
                 Margin="0,32,0,0">
             <Canvas Name="BodyPartsStruct"
@@ -337,7 +337,7 @@
 
             <Image Height="208" 
                    Canvas.Left="55" 
-                   Source="HumanBody3.png"
+                   Source="Image\HumanBody3.png"
                    Stretch="Fill" 
                    Canvas.Top="35"
                    Width="197"

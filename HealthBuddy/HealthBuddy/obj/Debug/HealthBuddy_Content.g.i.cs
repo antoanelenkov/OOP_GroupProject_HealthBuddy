@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("point.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/humanbody3.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/notpassed.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/passed.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/point.png")]
 
 

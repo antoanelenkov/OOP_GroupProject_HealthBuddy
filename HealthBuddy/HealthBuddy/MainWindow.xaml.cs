@@ -14,9 +14,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Reflection;
-
+using System.Runtime.Serialization;
+using System.Data.Sql;
 using HealthBuddy.Calculator;
 using HealthBuddy.Models;
+using System.Data.SqlClient;
+using HealthBuddy.Interfaces;
 
 namespace HealthBuddy
 {
@@ -40,7 +43,6 @@ namespace HealthBuddy
             //Database.SetInitializer(new DbConfiguration(DbConfiguration));
             InitializeComponent();
             // choosenPurpose.ItemsSource = typeof(DietCalculator.UserPurpose).GetEnumNames().Select(x => x.Replace('_', ' ')); Why UserPurposi is in class Calculator?
-           
 
             SecondFoodCombo.ItemsSource = fullMealList;
             FirstFoodCombo.ItemsSource = fullMealList;
@@ -118,14 +120,15 @@ namespace HealthBuddy
         }
 
         List<object> selectedIngrediants = new List<object>();
+        List<object> unSelectedIngrediants = new List<object>();
         // GO TO: MyMenu 
         private void ProceedToProfile_Click(object sender, RoutedEventArgs e)
         {
             IEnumerable<System.Windows.Controls.CheckBox> childs =
                 FoodSelectionStack.Children.OfType<CheckBox>(); // the key for the baraka is here :D
 
-            childs = childs.Where(x => x.IsChecked == true).ToList();
-            selectedIngrediants = childs.Select(x => x.Content).ToList();
+            selectedIngrediants = childs.Where(x => x.IsChecked == true).Select(x => x.Content).ToList();
+            unSelectedIngrediants = childs.Where(x => x.IsChecked == false).Select(x => x.Content).ToList();
 
             FoodSelectionWindow.Visibility = System.Windows.Visibility.Hidden;
             Menu.Visibility = System.Windows.Visibility.Visible;
@@ -145,49 +148,78 @@ namespace HealthBuddy
             childs = childs.Where(x => x.IsChecked == true).ToList();
             selectedTypeMeals = childs.Select(x => x.Content).ToList();
 
-            // TEST PROGRESS BAR
-
-
-            // DEBUG: assuming the menu is ready and contains only Dessert and Salad
-
             // TODO: Set Loading giff while the data is loading :)))
             try
             {
+                // var context = new HealthBuddyContext();
+
+                var filtredMeals = new List<Meal>();
+
+                foreach (var meal in selectedTypeMeals)
+                {
+                    string table = meal as String;
+                    var test = new List<Meal>();
+                    var raw = new List<Meal>();
+                    using (var ctx = new HealthBuddyContext())
+                    {
+                        var window = new Window();
+                        string query = string.Format("SELECT *FROM {0}s", table);
+                        raw = ctx.Database.SqlQuery<Meal>(query, table).ToList(); // TODO: Edit to IQuerable<Meal>
+
+                        List<string> strings = unSelectedIngrediants.Select(c => c.ToString()).ToList();
+
+                         //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
+                       
+                       test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();   
+                        
+                        // DEBUG 
+                        for (int index = 0; index < test.Count; index++)
+                        {
+                            window.Content += test[index].GetType().Name;
+                            window.Content += test[index].Name;
+                            window.Content += "\n";
+                            test[index] = Engine.InteractionManager.ConvertToTypeMeal(test[index], table);
+                            window.Content += test[index].GetType().Name;
+                            window.Content += test[index].Name;
+                            window.Content += "\n";
+                        }
+                        MessageBox.Show(window.Content.ToString());
+                    }
+                }
                 JustMenu menu = new JustMenu();
-                var context = new HealthBuddyContext();
 
                 //INFO:  We will know what kind of meal to search from <selectedTypeMeals>
-                Dessert tiramissu = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");// TODO: get from Simplex
-                menu._Dessert = tiramissu;
+                //Dessert tiramissu = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");// TODO: get from Simplex
+                //menu._Dessert = tiramissu; 
 
-                Salad salad = context.Salads.FirstOrDefault(x => x.Name == "TestSalad"); //TODO: get from Simplex               
-                menu._Salad = salad;
+                //Salad salad = context.Salads.FirstOrDefault(x => x.Name == "TestSalad"); //TODO: get from Simplex               
+                //menu._Salad = salad;
 
-                var listOfMealsFromMenu = new List<Meal>();
+                //var listOfMealsFromMenu = new List<Meal>();
 
-                listOfMealsFromMenu.Add(salad); // will be added in order
-                listOfMealsFromMenu.Add(tiramissu);
+                //listOfMealsFromMenu.Add(salad); // will be added in order
+                //listOfMealsFromMenu.Add(tiramissu);
 
-               var index = 0;
-                foreach (var typeMeal in selectedTypeMeals)
-                {
-                    var currentType = ("_" + typeMeal);
-                                       
+                //var index = 0;
+                //foreach (var typeMeal in selectedTypeMeals)
+                //{
+                //    var currentType = ("_" + typeMeal);
 
-                    Name_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Name").GetValue(listOfMealsFromMenu[index], null));
-                    Calories_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Calories").GetValue(listOfMealsFromMenu[index], null));
-                    Carbs_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Carbohydrates").GetValue(listOfMealsFromMenu[index], null));
-                    Proteins_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Proteins").GetValue(listOfMealsFromMenu[index], null));
-                    Lipids_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                                                        .GetType().GetProperty("Fats").GetValue(listOfMealsFromMenu[index], null));
-                   index++;
-                    ProgressBar.Value += 10;
-                }
-                ProgressBar.Value = 100;
+
+                //    Name_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
+                //                                        .GetType().GetProperty("Name").GetValue(listOfMealsFromMenu[index], null));
+                //    Calories_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
+                //                                        .GetType().GetProperty("Calories").GetValue(listOfMealsFromMenu[index], null));
+                //    Carbs_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
+                //                                        .GetType().GetProperty("Carbohydrates").GetValue(listOfMealsFromMenu[index], null));
+                //    Proteins_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
+                //                                        .GetType().GetProperty("Proteins").GetValue(listOfMealsFromMenu[index], null));
+                //    Lipids_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
+                //                                        .GetType().GetProperty("Fats").GetValue(listOfMealsFromMenu[index], null));
+                //    index++;
+                //    ProgressBar.Value += 10;
+                //}
+                //ProgressBar.Value = 100;
 
                 //TEST
                 User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());
@@ -238,18 +270,18 @@ namespace HealthBuddy
                 var first = GetMealToCompare(firstMealString);
                 var second = GetMealToCompare(secondMealString);
 
-                var uriSource = new Uri(@"Passed.png", UriKind.Relative);
-                var uriSourceNot = new Uri(@"NotPassed.png", UriKind.Relative);   
+                var uriSource = new Uri(@"Images\Passed.png", UriKind.Relative);
+                var uriSourceNot = new Uri(@"Images\NotPassed.png", UriKind.Relative);
 
-               
-                if(first<second)
+
+                if (first < second)
                 {
                     FirstComparerImage.Source = new BitmapImage(uriSource);
                     SecondComparerImage.Source = new BitmapImage(uriSourceNot);
                     TestCompare.Text += first.Name;
                     TestCompare.Text += "\n" + first.Calories;
                     TestCompare.Text += "\n" + second.Calories;
-                    
+
                 }
 
                 else if (second < first)
@@ -266,17 +298,16 @@ namespace HealthBuddy
                     SecondComparerImage.Source = new BitmapImage(uriSource);
                     TestCompare.Text = "Equal";
                 }
-                
-                 var neshtosi = context.Desserts.Where(x=> x.Name == "Raffaelo").First();
-               TestCompare.Text += neshtosi.Name;
-               TestCompare.Text += neshtosi.Ingredients.First();
-               TestCompare.Text += string.Join("\n", neshtosi.Ingredients);
+
+                var neshtosi = context.Desserts.Where(x => x.Name == "Raffaelo").First();
+                TestCompare.Text += neshtosi.Name;
+                TestCompare.Text += neshtosi.Ingredients.First();
+                TestCompare.Text += string.Join("\n", neshtosi.Ingredients);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            // Selected Item - no
         }
 
         private static Meal GetMealToCompare(string mealAsString)
@@ -314,7 +345,7 @@ Do not eat this! It is NOT good for you!
 Regards, your Healty Buddy  :* ");
         }
 
-       
+
 
     }
 }

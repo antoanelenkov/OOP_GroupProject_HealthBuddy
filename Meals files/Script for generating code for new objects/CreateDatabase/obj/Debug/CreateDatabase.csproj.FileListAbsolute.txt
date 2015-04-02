@@ -1,0 +1,6 @@
+C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\bin\Debug\CreateDatabase.exe.config
+C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\bin\Debug\CreateDatabase.exe
+C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\bin\Debug\CreateDatabase.pdb
+C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\obj\Debug\CreateDatabase.csprojResolveAssemblyReference.cache
+C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\obj\Debug\CreateDatabase.exe
+C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\obj\Debug\CreateDatabase.pdb

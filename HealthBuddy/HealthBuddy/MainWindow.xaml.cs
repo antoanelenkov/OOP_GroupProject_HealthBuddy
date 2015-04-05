@@ -46,8 +46,11 @@ namespace HealthBuddy
 
             SecondFoodCombo.ItemsSource = fullMealList;
             FirstFoodCombo.ItemsSource = fullMealList;
+<<<<<<< HEAD
            
            
+=======
+>>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
         }
         #region Get User's info
         User user = new User("Maria", 50, UserGender.Female, 40, 200, UserPurpose.Keep_Weight, new List<string>());
@@ -156,19 +159,28 @@ namespace HealthBuddy
                 // var context = new HealthBuddyContext();
 
                 var filtredMeals = new List<Meal>();
+<<<<<<< HEAD
                 var menuItems = new List<KeyValuePair<Meal, int>>();
+=======
+
+>>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
                 foreach (var meal in selectedTypeMeals)
                 {
                     string table = meal as String;
                     var test = new List<Meal>();
                     var raw = new List<Meal>();
                     using (var ctx = new HealthBuddyContext())
+<<<<<<< HEAD
                     {
+=======
+                    {                       
+>>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
                         string query = string.Format("SELECT *FROM {0}s", table);
                         raw = ctx.Database.SqlQuery<Meal>(query, table).ToList(); // TODO: Edit to IQuerable<Meal>
 
                         List<string> strings = unSelectedIngrediants.Select(c => c.ToString()).ToList();
 
+<<<<<<< HEAD
                         //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
 
                         test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();
@@ -234,6 +246,44 @@ namespace HealthBuddy
 
                 //INFO:  We will know what kind of meal to search from <selectedTypeMeals>
 
+=======
+                         //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
+                       
+                       test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();   
+                        
+                       
+                       
+                    }
+                   filtredMeals = filtredMeals.Concat(test).ToList();
+                   // DEBUG 
+                   var window = new Window();
+                   for (int index = 0; index < filtredMeals.Count; index++)
+                   {
+                       window.Content += filtredMeals[index].GetType().Name;
+                       window.Content += filtredMeals[index].Name;
+                       window.Content += "\n";
+                       filtredMeals[index] = Engine.InteractionManager.ConvertToTypeMeal(filtredMeals[index], table);
+                       window.Content += filtredMeals[index].GetType().Name;
+                       window.Content += filtredMeals[index].Name;
+                       window.Content += "\n";
+                   }
+                   MessageBox.Show(window.Content.ToString());
+                }
+                
+                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, 1875);
+                simplex.Generate();
+                for (int i = 0; i < filtredMeals.Count; i++)
+                {
+                    if (simplex.MealPortions[i] != 0) 
+                    MessageBox.Show(string.Format("{0}:{1}", filtredMeals[i].Name, simplex.MealPortions[i]));
+                    //TODO: Save info from simplex in History (struct)
+                }
+         
+                JustMenu menu = new JustMenu();
+
+                //INFO:  We will know what kind of meal to search from <selectedTypeMeals>
+                
+>>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
                 //var index = 0;
                 //foreach (var typeMeal in selectedTypeMeals)
                 //{
@@ -253,7 +303,11 @@ namespace HealthBuddy
                 //    index++;
                 //    ProgressBar.Value += 10;
                 //}
+<<<<<<< HEAD
 
+=======
+               
+>>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
 
                 //TEST
                 User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());

@@ -46,6 +46,8 @@ namespace HealthBuddy
 
             SecondFoodCombo.ItemsSource = fullMealList;
             FirstFoodCombo.ItemsSource = fullMealList;
+           
+           
         }
         #region Get User's info
         User user = new User("Maria", 50, UserGender.Female, 40, 200, UserPurpose.Keep_Weight, new List<string>());
@@ -154,7 +156,7 @@ namespace HealthBuddy
                 // var context = new HealthBuddyContext();
 
                 var filtredMeals = new List<Meal>();
-
+                var menuItems = new List<KeyValuePair<Meal, int>>();
                 foreach (var meal in selectedTypeMeals)
                 {
                     string table = meal as String;
@@ -162,43 +164,75 @@ namespace HealthBuddy
                     var raw = new List<Meal>();
                     using (var ctx = new HealthBuddyContext())
                     {
-                        var window = new Window();
                         string query = string.Format("SELECT *FROM {0}s", table);
                         raw = ctx.Database.SqlQuery<Meal>(query, table).ToList(); // TODO: Edit to IQuerable<Meal>
 
                         List<string> strings = unSelectedIngrediants.Select(c => c.ToString()).ToList();
 
-                         //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
-                       
-                       test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();   
-                        
-                        // DEBUG 
-                        for (int index = 0; index < test.Count; index++)
-                        {
-                            window.Content += test[index].GetType().Name;
-                            window.Content += test[index].Name;
-                            window.Content += "\n";
-                            test[index] = Engine.InteractionManager.ConvertToTypeMeal(test[index], table);
-                            window.Content += test[index].GetType().Name;
-                            window.Content += test[index].Name;
-                            window.Content += "\n";
-                        }
-                        MessageBox.Show(window.Content.ToString());
+                        //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
+
+                        test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();
+
+
+
+                    }
+                    filtredMeals = filtredMeals.Concat(test).ToList();
+                    // DEBUG 
+                    //var window = new Window();
+                    //for (int index = 0; index < filtredMeals.Count; index++)
+                    //{
+                    //    window.Content += filtredMeals[index].GetType().Name;
+                    //    window.Content += filtredMeals[index].Name;
+                    //    window.Content += "\n";
+                    //    filtredMeals[index] = Engine.InteractionManager.ConvertToTypeMeal(filtredMeals[index], table);
+                    //    window.Content += filtredMeals[index].GetType().Name;
+                    //    window.Content += filtredMeals[index].Name;
+                    //    window.Content += "\n";
+                    //}
+                    //MessageBox.Show(window.Content.ToString());
+                }
+
+                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, 1875); // TODO: Set user's Calories
+                simplex.Generate();
+                for (int i = 0; i < filtredMeals.Count; i++)
+                {
+                    if (simplex.MealPortions[i] != 0)
+                    {
+                       // MessageBox.Show(string.Format("{0}:{1}", filtredMeals[i].Name, simplex.MealPortions[i])); // TODO: Remove
+                        //TODO: Save info from meniTems list in History (struct)
+                        var menuItem = new KeyValuePair<Meal, int>(filtredMeals[i], simplex.MealPortions[i]);
+                        menuItems.Add(menuItem);
                     }
                 }
-                JustMenu menu = new JustMenu();
+                // Clear MenuInfo TextBox fields
+                //TODO: Event for the scrollbar
+                Name_MenuInfo.Text = "Name";
+                Calories_MenuInfo.Text = "Calories";
+                Carbs_MenuInfo.Text = "Carbs";
+                Proteins_MenuInfo.Text = "Proteins";
+                Lipids_MenuInfo.Text = "Fats";
+                PortionSize_MenuInfo.Text = "Portion Size";
+                Portions_MenuInfo.Text = "Portions";
+
+                foreach (var pair in menuItems)
+                {
+                    var meal = pair.Key;
+                    Name_MenuInfo.Text += Environment.NewLine + meal.Name;
+
+                    Calories_MenuInfo.Text += Environment.NewLine + meal.Calories;
+
+                    Carbs_MenuInfo.Text += Environment.NewLine + meal.Carbohydrates;
+
+                    Proteins_MenuInfo.Text += Environment.NewLine + meal.Proteins;
+
+                    Lipids_MenuInfo.Text += Environment.NewLine + meal.Fats;
+
+                    PortionSize_MenuInfo.Text += Environment.NewLine + meal.Portion_Size;
+
+                    Portions_MenuInfo.Text += Environment.NewLine + pair.Value;
+                }
 
                 //INFO:  We will know what kind of meal to search from <selectedTypeMeals>
-                //Dessert tiramissu = context.Desserts.FirstOrDefault(x => x.Name == "Tiramissu");// TODO: get from Simplex
-                //menu._Dessert = tiramissu; 
-
-                //Salad salad = context.Salads.FirstOrDefault(x => x.Name == "TestSalad"); //TODO: get from Simplex               
-                //menu._Salad = salad;
-
-                //var listOfMealsFromMenu = new List<Meal>();
-
-                //listOfMealsFromMenu.Add(salad); // will be added in order
-                //listOfMealsFromMenu.Add(tiramissu);
 
                 //var index = 0;
                 //foreach (var typeMeal in selectedTypeMeals)
@@ -219,7 +253,7 @@ namespace HealthBuddy
                 //    index++;
                 //    ProgressBar.Value += 10;
                 //}
-                //ProgressBar.Value = 100;
+
 
                 //TEST
                 User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());

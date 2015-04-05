@@ -79,7 +79,7 @@ namespace HealthBuddy
             {
                 int portions = new int();
                 solver.AddVariable(m.Name, out portions);
-                solver.SetBounds(portions, 0, 3);
+                solver.SetBounds(portions, 0, 5);
                 solver.SetIntegrality(portions, true);
                 solver.SetCoefficient(Calories, portions, (int)m.Calories_Per_Portions);
                 int prots = ((int)(m.Proteins * m.Portion_Size / 100) - this.proteins) * (-1);
@@ -91,10 +91,10 @@ namespace HealthBuddy
                 solver.SetCoefficient(cost, portions, rand.Next(0, 100));
                 mealPortions.Add(portions);
             }
-            solver.SetBounds(Calories, this.calories, int.MaxValue);
-            solver.SetBounds(Proteins, 0, int.MaxValue);
-            solver.SetBounds(Carbohydrates, 0, int.MaxValue);
-            solver.SetBounds(Fats, 0, int.MaxValue);
+            solver.SetBounds(Calories, this.calories, this.calories);
+            //solver.SetBounds(Proteins, 0, int.MaxValue);
+            //solver.SetBounds(Carbohydrates, 0, int.MaxValue);
+            //solver.SetBounds(Fats, 0, int.MaxValue);
             solver.AddGoal(cost, 1, true);
             solver.Solve(new SimplexSolverParams());
             for (int i = 0; i < this.mealPortions.Count; i++)

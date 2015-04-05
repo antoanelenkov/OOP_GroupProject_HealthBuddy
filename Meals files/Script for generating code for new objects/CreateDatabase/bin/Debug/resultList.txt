@@ -42,7 +42,6 @@ new Main { Name = "cooked brown beans", Calories = 241m, Carbohydrates = 2.9m, P
 new Main { Name = "cooked chickpeas", Calories = 145m, Carbohydrates = 6.5m, Proteins = 22.5m, Fats = 3.2m, Portion_Size = 100m, Calories_Per_Portions = 144.8m, Ingredients = "legumes" },
 new Main { Name = "cooked black beans", Calories = 108m, Carbohydrates = 7.5m, Proteins = 18.5m, Fats = 0.4m, Portion_Size = 100m, Calories_Per_Portions = 107.6m, Ingredients = "legumes" },
 new Main { Name = "pasta with chicken breast", Calories = 147m, Carbohydrates = 14m, Proteins = 16m, Fats = 3m, Portion_Size = 300m, Calories_Per_Portions = 441m, Ingredients = "grain meat" },
-
 new Breakfast { Name = "medium boiled egg", Calories = 156m, Carbohydrates = 14m, Proteins = 1.2m, Fats = 10.6m, Portion_Size = 50m, Calories_Per_Portions = 78.1m, Ingredients = "milk" },
 new Breakfast { Name = "whole milk", Calories = 64m, Carbohydrates = 3m, Proteins = 5m, Fats = 3.6m, Portion_Size = 200m, Calories_Per_Portions = 128.8m, Ingredients = "milk" },
 new Breakfast { Name = "2% fat milk", Calories = 50m, Carbohydrates = 3m, Proteins = 5m, Fats = 2m, Portion_Size = 200m, Calories_Per_Portions = 100m, Ingredients = "milk" },
@@ -64,8 +63,7 @@ new Breakfast { Name = "peanuts", Calories = 573m, Carbohydrates = 26m, Proteins
 new Breakfast { Name = "sunflower seeds", Calories = 571m, Carbohydrates = 22.8m, Proteins = 8.3m, Fats = 49.6m, Portion_Size = 50m, Calories_Per_Portions = 285.4m, Ingredients = "nuts" },
 new Breakfast { Name = "wheat bread", Calories = 244m, Carbohydrates = 7.1m, Proteins = 51.4m, Fats = 1.1m, Portion_Size = 50m, Calories_Per_Portions = 121.95m, Ingredients = "grain" },
 new Breakfast { Name = "rye bread", Calories = 231m, Carbohydrates = 6.8m, Proteins = 48.3m, Fats = 1.2m, Portion_Size = 50m, Calories_Per_Portions = 115.6m, Ingredients = "grain" },
-new Breakfast { Name = "brown bread", Calories = 234m, Carbohydrates = 8m, Proteins = 46.6m, Fats = 1.7m, Portion_Size = 50m, Calories_Per_Portions = 116.85m, Ingredients = "grain" }
-
+new Breakfast { Name = "brown bread", Calories = 234m, Carbohydrates = 8m, Proteins = 46.6m, Fats = 1.7m, Portion_Size = 50m, Calories_Per_Portions = 116.85m, Ingredients = "grain" },
 new Soup { Name = "bean soup", Calories = 72m, Carbohydrates = 4m, Proteins = 10m, Fats = 1.8m, Portion_Size = 350m, Calories_Per_Portions = 252.7m, Ingredients = "legumes" },
 new Soup { Name = "pea soup", Calories = 75m, Carbohydrates = 4.4m, Proteins = 8.9m, Fats = 2.4m, Portion_Size = 350m, Calories_Per_Portions = 261.8m, Ingredients = "legumes" },
 new Soup { Name = "mushroom soup", Calories = 27m, Carbohydrates = 1.3m, Proteins = 1.3m, Fats = 1.8m, Portion_Size = 350m, Calories_Per_Portions = 93.1m, Ingredients = "vegetables" },
@@ -77,8 +75,7 @@ new Soup { Name = "fruit soup with apples", Calories = 49m, Carbohydrates = 0.1m
 new Soup { Name = "fish soup ", Calories = 45m, Carbohydrates = 3.4m, Proteins = 5.5m, Fats = 1m, Portion_Size = 350m, Calories_Per_Portions = 156.1m, Ingredients = "fish" },
 new Soup { Name = "spanich soup", Calories = 43m, Carbohydrates = 2.2m, Proteins = 6.6m, Fats = 0.9m, Portion_Size = 350m, Calories_Per_Portions = 151.55m, Ingredients = "vegetables" },
 new Soup { Name = "green beans soup", Calories = 68m, Carbohydrates = 3.2m, Proteins = 11.2m, Fats = 1.2m, Portion_Size = 350m, Calories_Per_Portions = 239.4m, Ingredients = "beans" },
-new Soup { Name = "shkembe soup", Calories = 84m, Carbohydrates = 16m, Proteins = 0m, Fats = 2.2m, Portion_Size = 350m, Calories_Per_Portions = 293.3m, Ingredients = "meat" }
-
+new Soup { Name = "shkembe soup", Calories = 84m, Carbohydrates = 16m, Proteins = 0m, Fats = 2.2m, Portion_Size = 350m, Calories_Per_Portions = 293.3m, Ingredients = "meat" },
 new Dessert { Name = "whole milk", Calories = 64m, Carbohydrates = 3m, Proteins = 5m, Fats = 3.6m, Portion_Size = 200m, Calories_Per_Portions = 128.8m, Ingredients = "milk" },
 new Dessert { Name = "2% fat milk", Calories = 50m, Carbohydrates = 3m, Proteins = 5m, Fats = 2m, Portion_Size = 200m, Calories_Per_Portions = 100m, Ingredients = "milk" },
 new Dessert { Name = "0.1% fat milk", Calories = 33m, Carbohydrates = 3m, Proteins = 5m, Fats = 0.1m, Portion_Size = 200m, Calories_Per_Portions = 65.8m, Ingredients = "milk" },
@@ -94,13 +91,11 @@ new Dessert { Name = "bisquit cake with fruits", Calories = 438m, Carbohydrates 
 new Dessert { Name = "cake with nuts and dry fruits", Calories = 398m, Carbohydrates = 6.4m, Proteins = 53.5m, Fats = 17.6m, Portion_Size = 130m, Calories_Per_Portions = 517.4m, Ingredients = "sweet grain nuts fruits" },
 new Dessert { Name = "cheesecake", Calories = 335m, Carbohydrates = 13.9m, Proteins = 39.7m, Fats = 13.4m, Portion_Size = 130m, Calories_Per_Portions = 435.5m, Ingredients = "milk sweet" },
 new Dessert { Name = "tiramissu", Calories = 385m, Carbohydrates = 5m, Proteins = 35m, Fats = 25m, Portion_Size = 150m, Calories_Per_Portions = 577.5m, Ingredients = "milk sweet" },
-new Dessert { Name = "strawberry with cream", Calories = 132m, Carbohydrates = 1.1m, Proteins = 8.4m, Fats = 10.4m, Portion_Size = 130m, Calories_Per_Portions = 171.08m, Ingredients = "fruits milk" }
-
+new Dessert { Name = "strawberry with cream", Calories = 132m, Carbohydrates = 1.1m, Proteins = 8.4m, Fats = 10.4m, Portion_Size = 130m, Calories_Per_Portions = 171.08m, Ingredients = "fruits milk" },
 new Liquid { Name = "cup of orange juice", Calories = 46m, Carbohydrates = 0.6m, Proteins = 10.2m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" },
 new Liquid { Name = "piece of pineapple", Calories = 66m, Carbohydrates = 0.7m, Proteins = 15.6m, Fats = 0.1m, Portion_Size = 170m, Calories_Per_Portions = 112.37m, Ingredients = "fruit" },
 new Liquid { Name = "cup of pineapple juice", Calories = 67m, Carbohydrates = 0.5m, Proteins = 16m, Fats = 0.1m, Portion_Size = 250m, Calories_Per_Portions = 167.25m, Ingredients = "fruit" },
-new Liquid { Name = "cup of apple juice", Calories = 46m, Carbohydrates = 0.3m, Proteins = 10.5m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" }
-
+new Liquid { Name = "cup of apple juice", Calories = 46m, Carbohydrates = 0.3m, Proteins = 10.5m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" },
 new Appetiser { Name = "piece of cheddar cheese(kashkaval)", Calories = 434m, Carbohydrates = 26m, Proteins = 1.5m, Fats = 36m, Portion_Size = 50m, Calories_Per_Portions = 217m, Ingredients = "milk" },
 new Appetiser { Name = "piece of feta cheese(sirene)", Calories = 296m, Carbohydrates = 16m, Proteins = 4m, Fats = 24m, Portion_Size = 50m, Calories_Per_Portions = 148m, Ingredients = "milk" },
 new Appetiser { Name = "cup of cottage cheese", Calories = 103m, Carbohydrates = 12m, Proteins = 3.6m, Fats = 4.5m, Portion_Size = 210m, Calories_Per_Portions = 216.09m, Ingredients = "milk" },
@@ -110,4 +105,4 @@ new Appetiser { Name = "hazelnuts", Calories = 717m, Carbohydrates = 15.2m, Prot
 new Appetiser { Name = "cashew", Calories = 576m, Carbohydrates = 18m, Proteins = 27m, Fats = 44m, Portion_Size = 50m, Calories_Per_Portions = 288m, Ingredients = "nuts" },
 new Appetiser { Name = "walnuts", Calories = 673m, Carbohydrates = 15m, Proteins = 7m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 336.5m, Ingredients = "nuts" },
 new Appetiser { Name = "peanuts", Calories = 573m, Carbohydrates = 26m, Proteins = 7m, Fats = 49m, Portion_Size = 50m, Calories_Per_Portions = 286.5m, Ingredients = "nuts" },
-new Appetiser { Name = "sunflower seeds", Calories = 571m, Carbohydrates = 22.8m, Proteins = 8.3m, Fats = 49.6m, Portion_Size = 50m, Calories_Per_Portions = 285.4m, Ingredients = "nuts" }
+new Appetiser { Name = "sunflower seeds", Calories = 571m, Carbohydrates = 22.8m, Proteins = 8.3m, Fats = 49.6m, Portion_Size = 50m, Calories_Per_Portions = 285.4m, Ingredients = "nuts" },

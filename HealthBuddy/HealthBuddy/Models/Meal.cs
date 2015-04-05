@@ -49,7 +49,7 @@
             set { this.proteins = value; }
         }
 
-        [Range(0, 100001)]
+       // [Range(0, 100001)]
         public decimal Carbohydrates
         {
             get { return this.carbohydrates; }

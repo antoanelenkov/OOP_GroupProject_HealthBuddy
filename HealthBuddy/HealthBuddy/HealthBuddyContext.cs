@@ -13,8 +13,9 @@ namespace HealthBuddy
         public HealthBuddyContext()
             : base("HealthBuddyContext")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthBuddyContext, Configuration>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<HealthBuddyContext>());    
+           Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthBuddyContext, Configuration>());
+       //  Database.SetInitializer(new DropCreateDatabaseAlways<HealthBuddyContext>());    
+
         }
 
         public virtual DbSet<Appetiser> Appetisers { get; set; }

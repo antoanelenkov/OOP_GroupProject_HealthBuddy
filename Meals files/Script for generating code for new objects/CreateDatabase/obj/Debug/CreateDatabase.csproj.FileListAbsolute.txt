@@ -4,3 +4,9 @@ C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_
 C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\obj\Debug\CreateDatabase.csprojResolveAssemblyReference.cache
 C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\obj\Debug\CreateDatabase.exe
 C:\Users\Antoan Elenkov\Documents\Visual Studio 2013\Projects\Final project\OOP_GroupProject_HealthBuddy\CreateDatabase\CreateDatabase\obj\Debug\CreateDatabase.pdb
+C:\Users\Solara\Documents\GitHub\OOP_GroupProject_HealthBuddy\Meals files\Script for generating code for new objects\CreateDatabase\bin\Debug\CreateDatabase.exe.config
+C:\Users\Solara\Documents\GitHub\OOP_GroupProject_HealthBuddy\Meals files\Script for generating code for new objects\CreateDatabase\obj\Debug\CreateDatabase.exe
+C:\Users\Solara\Documents\GitHub\OOP_GroupProject_HealthBuddy\Meals files\Script for generating code for new objects\CreateDatabase\obj\Debug\CreateDatabase.pdb
+C:\Users\Solara\Documents\GitHub\OOP_GroupProject_HealthBuddy\Meals files\Script for generating code for new objects\CreateDatabase\bin\Debug\CreateDatabase.exe
+C:\Users\Solara\Documents\GitHub\OOP_GroupProject_HealthBuddy\Meals files\Script for generating code for new objects\CreateDatabase\bin\Debug\CreateDatabase.pdb
+C:\Users\Solara\Documents\GitHub\OOP_GroupProject_HealthBuddy\Meals files\Script for generating code for new objects\CreateDatabase\obj\Debug\CreateDatabase.csprojResolveAssemblyReference.cache

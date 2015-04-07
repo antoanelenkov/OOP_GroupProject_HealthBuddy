@@ -8,10 +8,10 @@ namespace HealthBuddy.Interfaces
 {
     public interface IDietCalculator
     {
-        public int AgeOfPerson { get; set; }
+         int AgeOfPerson { get; set; }
 
-        public double HeightOfPerson { get; set; }
+         double HeightOfPerson { get; set; }
 
-        public double WeightOfPerson { get; set; }
+         double WeightOfPerson { get; set; }
     }
 }

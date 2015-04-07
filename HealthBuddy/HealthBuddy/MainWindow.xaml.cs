@@ -20,6 +20,7 @@ using HealthBuddy.Calculator;
 using HealthBuddy.Models;
 using System.Data.SqlClient;
 using HealthBuddy.Interfaces;
+using HealthBuddy.Enums;
 
 namespace HealthBuddy
 {

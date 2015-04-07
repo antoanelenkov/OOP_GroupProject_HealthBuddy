@@ -142,6 +142,40 @@
     <Resource Include="Images\Passed.png" />
     <Resource Include="Images\Point.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fruits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FoodIcons\fish.png" />
+    <Resource Include="FoodIcons\fruits.png" />
+    <Resource Include="FoodIcons\grain.png" />
+    <Resource Include="FoodIcons\legumes.png" />
+    <Resource Include="FoodIcons\meat.png" />
+    <Resource Include="FoodIcons\milk.png" />
+    <Resource Include="FoodIcons\nuts.png" />
+    <Resource Include="FoodIcons\vegetables.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="milk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="nuts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="vegetables.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="grain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="legumes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="meat.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

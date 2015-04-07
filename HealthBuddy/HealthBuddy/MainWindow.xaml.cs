@@ -123,15 +123,15 @@ namespace HealthBuddy
         }
 
         List<object> selectedIngrediants = new List<object>();
-        List<object> unSelectedIngrediants = new List<object>();
+        List<object> unSelectedIngrediants = new List<object>() {"Fruits", "Vegetables", "Nuts", "Legumes", "Grain", "Milk", "Fish" , "Meat" };
         // GO TO: MyMenu 
         private void ProceedToProfile_Click(object sender, RoutedEventArgs e)
         {
             IEnumerable<System.Windows.Controls.CheckBox> childs =
                 FoodSelectionStack.Children.OfType<CheckBox>(); // the key for the baraka is here :D
 
-            selectedIngrediants = childs.Where(x => x.IsChecked == true).Select(x => x.Content).ToList();
-            unSelectedIngrediants = childs.Where(x => x.IsChecked == false).Select(x => x.Content).ToList();
+            //selectedIngrediants = childs.Where(x => x.IsChecked == true).Select(x => x.Content).ToList();
+            //unSelectedIngrediants = childs.Where(x => x.IsChecked == false).Select(x => x.Content).ToList();
 
             FoodSelectionWindow.Visibility = System.Windows.Visibility.Hidden;
             Menu.Visibility = System.Windows.Visibility.Visible;
@@ -395,6 +395,127 @@ Regards, your Healty Buddy  :* ");
             if (first < second) MessageBox.Show(@"New Unhealty Exeption(should be implemented here). 
 Do not eat this! It is NOT good for you! 
 Regards, your Healty Buddy  :* ");
+        }
+
+        private void SelectFruit_Click(object sender, RoutedEventArgs e)
+        {            
+            MessageBox.Show("Fruit selected!");
+            if (selectedIngrediants.Contains("Fruits"))
+            {
+                selectedIngrediants.Remove("Fruits");
+                unSelectedIngrediants.Add("Fruits");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Fruits");
+                unSelectedIngrediants.Remove("Fruits");
+            }
+        }
+
+        private void SelectVegetable_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedIngrediants.Contains("Vegetables"))
+            {
+                selectedIngrediants.Remove("Vegetables");
+                unSelectedIngrediants.Add("Vegetables");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Vegetables");
+                unSelectedIngrediants.Remove("Vegetables");
+            }
+        }
+
+        private void SelectNuts_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedIngrediants.Contains("Nuts"))
+            {
+                selectedIngrediants.Remove("Nuts");
+                unSelectedIngrediants.Add("Nuts");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Nuts");
+                unSelectedIngrediants.Remove("Nuts");
+            }
+        }
+
+        private void SelectLegumes_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedIngrediants.Contains("Legumes"))
+            {
+                selectedIngrediants.Remove("Legumes");
+                unSelectedIngrediants.Add("Legumes");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Legumes");
+                unSelectedIngrediants.Remove("Legumes");
+            }
+        }
+
+        private void SelectGrain_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedIngrediants.Contains("Grain"))
+            {
+                selectedIngrediants.Remove("Grain");
+                unSelectedIngrediants.Add("Grain");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Grain");
+                unSelectedIngrediants.Remove("Grain");
+            }
+        }
+
+        private void SelectMilk_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedIngrediants.Contains("Milk"))
+            {
+                selectedIngrediants.Remove("Milk");
+                unSelectedIngrediants.Add("Milk");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Milk");
+                unSelectedIngrediants.Remove("Milk");
+            }
+        }
+
+        private void SelectFish_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedIngrediants.Contains("Fish"))
+            {
+                selectedIngrediants.Remove("Fish");
+                unSelectedIngrediants.Add("Fish");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Fish");
+                unSelectedIngrediants.Remove("Fish");
+            }
+        }
+
+        private void SelectMeat_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedIngrediants.Contains("Meat"))
+            {
+                selectedIngrediants.Remove("Meat");
+                unSelectedIngrediants.Add("Meat");
+            }
+
+            else
+            {
+                selectedIngrediants.Add("Meat");
+                unSelectedIngrediants.Remove("Meat");
+            }
         }
 
 

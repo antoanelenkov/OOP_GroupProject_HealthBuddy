@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"		
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="HealthBuddy.MainWindow"		
 		HorizontalAlignment="Center" VerticalAlignment="Center"       
-        Title="MainWindow" Height="410" Width="545.897">
+        Title="MainWindow" Height="410" Width="545.897"
+    Icon="fruits.png">
     <Window.Resources>
         <Style x:Key="userInfoTextBlock" TargetType="{x:Type TextBlock}">
             <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -55,6 +56,30 @@
         <Style x:Key="TypeMealCheckBox" TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="AntiqueWhite"/>
             <Setter Property="Width" Value="90"/>
+        </Style>
+
+        <Style x:Key="RoundButtonFood" TargetType="Button">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="35"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <StackPanel>
+                                <Image Name="FoodPng"
+                                    Height="30" 
+                                           Canvas.Left="23" 
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="30"/>
+
+                            </StackPanel>
+                        </Grid>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
 
@@ -165,7 +190,7 @@
 				Background="Chartreuse"
 				Click="Proceed_Click"/>
         </Canvas>
-        <Canvas x:Name="FoodSelectionWindow"
+        <Canvas Name="FoodSelectionWindow"
 			Visibility="Visible"
 			Background="BlueViolet" >
 
@@ -177,7 +202,7 @@
 				Canvas.Left="10" 
 				TextWrapping="Wrap"                     
 				Canvas.Top="33"/>
-            <WrapPanel   x:Name="FoodSelectionStack"
+            <WrapPanel   Name="FoodSelectionStack"
 				Orientation="Horizontal"
 				Width="277" 
 				Canvas.Left="100" 
@@ -243,7 +268,7 @@
                    />
 
         </Canvas>
-        <Canvas x:Name="Menu" Visibility="Hidden"
+        <Canvas x:Name="Menu" Visibility="Visible"
 			Background="#FFE039"                
 			Margin="0,27,0,0">
             <StackPanel x:Name="MenuInfo"
@@ -286,29 +311,28 @@
 
             </StackPanel>
 
-
             <Calendar Name="Calendar"
                 Canvas.Right="10" 
 				Width="178"
 				Background="YellowGreen" 
 				Height="163"
-				Canvas.Left="350" Canvas.Top="162"
+				Canvas.Left="348" Canvas.Top="171"
                      
                  SelectedDatesChanged="Calendar_SelectedDatesChanged">
-                
+
             </Calendar>
             <Button Content="Generate Menu"
 				x:Name="Generate_Menu_Button"
 				Background="YellowGreen"
-				Canvas.Left="246"
-				Canvas.Top="165" 
+				Canvas.Left="233"
+				Canvas.Top="211" 
 				Width="90"
 				Click="Generate_Menu_Button_Click" RenderTransformOrigin="0.267,-0.591"/>
             <Expander Header="Select type meal"
-                      Canvas.Left="23" 
-                      Canvas.Top="160" 
-                      Width="160" 
-                      Height="163">
+                      Canvas.Left="10" 
+                      Canvas.Top="210" 
+                      Width="117" 
+                      Height="136">
                 <WrapPanel x:Name="TypeMealsCheckBox"
 				Background="Orange"
 				Width="163" Canvas.Left="10" Canvas.Top="155" Height="129" Margin="0,0,-5,0"
@@ -336,14 +360,190 @@
                     Canvas.Left="8" 
                     Canvas.Top="8" 
                     Width="518"/>
+            <Canvas  
+                    Height="40"
+                    Width="368"
+                    Canvas.Left="10" 
+                    Canvas.Top="165">
+                <Button  Name="SelectFruit"
+                         Click="SelectFruit_Click"
+                    Style="{StaticResource RoundButtonFood}">
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="fruits.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button  Name="SelectVegetable"                         
+                       Click="SelectVegetable_Click"
+                    Style="{StaticResource RoundButtonFood}" Canvas.Left="41" >
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="vegetables.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button  Name="SelectNuts"
+                       Click="SelectNuts_Click"
+                    Style="{StaticResource RoundButtonFood}" RenderTransformOrigin="1.931,0.517" Canvas.Left="81">
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="nuts.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button  Name="SelectLegumes"
+                        Click="SelectLegumes_Click"
+                    Style="{StaticResource RoundButtonFood}" RenderTransformOrigin="1.931,0.517" Canvas.Left="120">
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="legumes.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button  Name="SelectGrain"
+                        Click="SelectGrain_Click"
+                    Style="{StaticResource RoundButtonFood}" RenderTransformOrigin="1.931,0.517" Canvas.Left="160">
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="grain.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button  Name="SelectMilk"
+                        Click="SelectMilk_Click"
+                    Style="{StaticResource RoundButtonFood}" RenderTransformOrigin="1.931,0.517" Canvas.Left="201">
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="milk.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button  Name="SelectFish"
+                        Click="SelectFish_Click"
+                    Style="{StaticResource RoundButtonFood}" RenderTransformOrigin="1.931,0.517" Canvas.Left="241">
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="fish.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button  Name="SelectMeat"
+                        Click="SelectMeat_Click"
+                    Style="{StaticResource RoundButtonFood}" RenderTransformOrigin="1.931,0.517" Canvas.Left="281">
+                    <Button.Template x:Uid="OnOffButton">
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Height="35" 
+                                           Canvas.Left="23" 
+                                           Source="meat.png"
+                                           Stretch="Fill" 
+                                           Canvas.Top="302" 
+                                           Width="35"/>
+                                    <TextBlock></TextBlock>
+                                </StackPanel>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </Canvas>
+
             <TextBlock Text="?" 
                        FontSize="103"
                        FontWeight="ExtraBold"
                        Foreground="DarkOrange"
                        
-                       Canvas.Left="155" 
+                       Canvas.Left="34" 
                        TextWrapping="Wrap" 
-                        Canvas.Top="218" 
+                        Canvas.Top="304" 
                        Height="113" 
                        Width="146" RenderTransformOrigin="0.5,0.5">
                 <TextBlock.RenderTransform>
@@ -355,7 +555,7 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-
+           
         </Canvas>
         <Canvas x:Name="Exercises" Visibility="Hidden"
 			Background="Orange"
@@ -368,8 +568,7 @@
                    
 				Visibility="Visible"/>
             <Image Height="16" 
-				Canvas.Left="163" 
-				Source="Point.png" 
+				Canvas.Left="163" 				 
 				Stretch="Uniform" 
 				Canvas.Top="197" 
 				Width="16"
@@ -377,7 +576,7 @@
 
             <Image Height="208" 
 				Canvas.Left="55" 
-				Source="Image\HumanBody3.png"
+				
 				Stretch="Fill" 
 				Canvas.Top="35"
 				Width="197"
@@ -387,12 +586,12 @@
         <Canvas x:Name="Icompare"
 			Visibility="Hidden"
 			Background="Coral"
-			Margin="0,32,0,0">            
+			Margin="0,32,0,0">
             <ComboBox x:Name="FirstFoodCombo"
 				Canvas.Left="42" 
 				Canvas.Top="86" 
 				Width="120" />
-            
+
             <ComboBox x:Name="SecondFoodCombo"
 				Canvas.Left="349" 
 				Canvas.Top="86"
@@ -435,8 +634,6 @@
 				Width="25"                   
                    />
         </Canvas>
-
-
 
     </Grid>
 </Window>

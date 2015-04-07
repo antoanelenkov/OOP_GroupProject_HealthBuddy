@@ -76,6 +76,7 @@
     <Compile Include="Engine\InteractionManager.cs" />
     <Compile Include="Interfaces\IMeal.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\History.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="SimplexMealGenerator.cs" />
     <Page Include="MainWindow.xaml">

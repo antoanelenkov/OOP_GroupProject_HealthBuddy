@@ -46,11 +46,8 @@ namespace HealthBuddy
 
             SecondFoodCombo.ItemsSource = fullMealList;
             FirstFoodCombo.ItemsSource = fullMealList;
-<<<<<<< HEAD
-           
-           
-=======
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
+
+
         }
         #region Get User's info
         User user = new User("Maria", 50, UserGender.Female, 40, 200, UserPurpose.Keep_Weight, new List<string>());
@@ -144,6 +141,7 @@ namespace HealthBuddy
         }
 
         List<object> selectedTypeMeals = new List<object>();
+        HashSet<History> AllHistory = new HashSet<History>();
 
         private void Generate_Menu_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -159,28 +157,19 @@ namespace HealthBuddy
                 // var context = new HealthBuddyContext();
 
                 var filtredMeals = new List<Meal>();
-<<<<<<< HEAD
                 var menuItems = new List<KeyValuePair<Meal, int>>();
-=======
-
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
                 foreach (var meal in selectedTypeMeals)
                 {
                     string table = meal as String;
                     var test = new List<Meal>();
                     var raw = new List<Meal>();
                     using (var ctx = new HealthBuddyContext())
-<<<<<<< HEAD
                     {
-=======
-                    {                       
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
                         string query = string.Format("SELECT *FROM {0}s", table);
                         raw = ctx.Database.SqlQuery<Meal>(query, table).ToList(); // TODO: Edit to IQuerable<Meal>
 
                         List<string> strings = unSelectedIngrediants.Select(c => c.ToString()).ToList();
 
-<<<<<<< HEAD
                         //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
 
                         test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();
@@ -210,104 +199,31 @@ namespace HealthBuddy
                 {
                     if (simplex.MealPortions[i] != 0)
                     {
-                       // MessageBox.Show(string.Format("{0}:{1}", filtredMeals[i].Name, simplex.MealPortions[i])); // TODO: Remove
+                        // MessageBox.Show(string.Format("{0}:{1}", filtredMeals[i].Name, simplex.MealPortions[i])); // TODO: Remove
                         //TODO: Save info from meniTems list in History (struct)
                         var menuItem = new KeyValuePair<Meal, int>(filtredMeals[i], simplex.MealPortions[i]);
                         menuItems.Add(menuItem);
                     }
                 }
-                // Clear MenuInfo TextBox fields
+
                 //TODO: Event for the scrollbar
-                Name_MenuInfo.Text = "Name";
-                Calories_MenuInfo.Text = "Calories";
-                Carbs_MenuInfo.Text = "Carbs";
-                Proteins_MenuInfo.Text = "Proteins";
-                Lipids_MenuInfo.Text = "Fats";
-                PortionSize_MenuInfo.Text = "Portion Size";
-                Portions_MenuInfo.Text = "Portions";
+                ClearMenuInfoBar();
 
-                foreach (var pair in menuItems)
-                {
-                    var meal = pair.Key;
-                    Name_MenuInfo.Text += Environment.NewLine + meal.Name;
+                PrintMenuInfo(menuItems);
+                // Add to History
 
-                    Calories_MenuInfo.Text += Environment.NewLine + meal.Calories;
-
-                    Carbs_MenuInfo.Text += Environment.NewLine + meal.Carbohydrates;
-
-                    Proteins_MenuInfo.Text += Environment.NewLine + meal.Proteins;
-
-                    Lipids_MenuInfo.Text += Environment.NewLine + meal.Fats;
-
-                    PortionSize_MenuInfo.Text += Environment.NewLine + meal.Portion_Size;
-
-                    Portions_MenuInfo.Text += Environment.NewLine + pair.Value;
-                }
-
-                //INFO:  We will know what kind of meal to search from <selectedTypeMeals>
-
-=======
-                         //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
-                       
-                       test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();   
-                        
-                       
-                       
-                    }
-                   filtredMeals = filtredMeals.Concat(test).ToList();
-                   // DEBUG 
-                   var window = new Window();
-                   for (int index = 0; index < filtredMeals.Count; index++)
-                   {
-                       window.Content += filtredMeals[index].GetType().Name;
-                       window.Content += filtredMeals[index].Name;
-                       window.Content += "\n";
-                       filtredMeals[index] = Engine.InteractionManager.ConvertToTypeMeal(filtredMeals[index], table);
-                       window.Content += filtredMeals[index].GetType().Name;
-                       window.Content += filtredMeals[index].Name;
-                       window.Content += "\n";
-                   }
-                   MessageBox.Show(window.Content.ToString());
-                }
-                
-                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, 1875);
-                simplex.Generate();
-                for (int i = 0; i < filtredMeals.Count; i++)
-                {
-                    if (simplex.MealPortions[i] != 0) 
-                    MessageBox.Show(string.Format("{0}:{1}", filtredMeals[i].Name, simplex.MealPortions[i]));
-                    //TODO: Save info from simplex in History (struct)
-                }
-         
-                JustMenu menu = new JustMenu();
-
-                //INFO:  We will know what kind of meal to search from <selectedTypeMeals>
-                
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
-                //var index = 0;
-                //foreach (var typeMeal in selectedTypeMeals)
-                //{
-                //    var currentType = ("_" + typeMeal);
+                var newHistory = new History();
+                newHistory.Date = (DateTime)Calendar.SelectedDate.Value == null ? DateTime.Now : Calendar.SelectedDate.Value; // TODO: Change with value from calendar
+                newHistory.Menu = menuItems;
+                var date = Calendar.SelectedDate.Value;
+                AllHistory.Remove(AllHistory.Where(x => x.Date == date).Select(z=>z).FirstOrDefault());
+                AllHistory.Add(newHistory);
 
 
-                //    Name_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                //                                        .GetType().GetProperty("Name").GetValue(listOfMealsFromMenu[index], null));
-                //    Calories_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                //                                        .GetType().GetProperty("Calories").GetValue(listOfMealsFromMenu[index], null));
-                //    Carbs_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                //                                        .GetType().GetProperty("Carbohydrates").GetValue(listOfMealsFromMenu[index], null));
-                //    Proteins_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                //                                        .GetType().GetProperty("Proteins").GetValue(listOfMealsFromMenu[index], null));
-                //    Lipids_MenuInfo.Text += "\n" + (menu.GetType().GetProperty(currentType).GetValue(menu, null)
-                //                                        .GetType().GetProperty("Fats").GetValue(listOfMealsFromMenu[index], null));
-                //    index++;
-                //    ProgressBar.Value += 10;
-                //}
-<<<<<<< HEAD
 
-=======
-               
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
+                //var searchedHistory = AllHistory.Where(x => x.Date == Calendar.SelectedDate).Select(m => m.Menu).First();
+                //PrintMenuInfo(searchedHistory);
+
 
                 //TEST
                 User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());
@@ -321,6 +237,53 @@ namespace HealthBuddy
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ClearMenuInfoBar();
+            var c = sender as Calendar;
+            if (c.SelectedDate.HasValue)
+            {
+                var date = c.SelectedDate.Value;
+                if (AllHistory.Any(x => x.Date == date))
+                {
+                    var searchedHistory = AllHistory.Where(x => x.Date == date).Select(m => m.Menu).FirstOrDefault();
+                    PrintMenuInfo(searchedHistory);
+                }
+            }
+        }
+
+        private void ClearMenuInfoBar()
+        {
+            Name_MenuInfo.Text = "Name";
+            Calories_MenuInfo.Text = "Calories";
+            Carbs_MenuInfo.Text = "Carbs";
+            Proteins_MenuInfo.Text = "Proteins";
+            Lipids_MenuInfo.Text = "Fats";
+            PortionSize_MenuInfo.Text = "Portion Size";
+            Portions_MenuInfo.Text = "Portions";
+        }
+
+        private void PrintMenuInfo(IEnumerable<KeyValuePair<Meal, int>> menuItems)
+        {
+            foreach (var pair in menuItems)
+            {
+                var meal = pair.Key;
+                Name_MenuInfo.Text += Environment.NewLine + meal.Name;
+
+                Calories_MenuInfo.Text += Environment.NewLine + meal.Calories;
+
+                Carbs_MenuInfo.Text += Environment.NewLine + meal.Carbohydrates;
+
+                Proteins_MenuInfo.Text += Environment.NewLine + meal.Proteins;
+
+                Lipids_MenuInfo.Text += Environment.NewLine + meal.Fats;
+
+                PortionSize_MenuInfo.Text += Environment.NewLine + meal.Portion_Size;
+
+                Portions_MenuInfo.Text += Environment.NewLine + pair.Value;
             }
         }
 
@@ -432,6 +395,8 @@ Regards, your Healty Buddy  :* ");
 Do not eat this! It is NOT good for you! 
 Regards, your Healty Buddy  :* ");
         }
+
+
 
 
 

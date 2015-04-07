@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"		
@@ -7,39 +6,20 @@
         Title="MainWindow" Height="410" Width="545.897">
     <Window.Resources>
         <Style x:Key="userInfoTextBlock" TargetType="{x:Type TextBlock}">
-=======
-﻿<Window x:Class="HealthBuddy.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		
-		HorizontalAlignment="Center" VerticalAlignment="Center"
-       
-        Title="MainWindow" Height="350" Width="545.897">
-    <Window.Resources>
-        <Style x:Key="userInfoTextBlock" TargetType="TextBlock">
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Height" Value="23"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Foreground" Value="AntiqueWhite"/>
         </Style>
-<<<<<<< HEAD
         <Style x:Key="userInfoTextBox" TargetType="{x:Type TextBox}">
-=======
-        <Style x:Key="userInfoTextBox" TargetType="TextBox">
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
             <Setter Property="FontStyle" Value="Oblique"/>
             <Setter Property="Background" Value="BlueViolet"/>
             <Setter Property="Height" Value="23"/>
             <Setter Property="FontWeight" Value="Thin"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
-<<<<<<< HEAD
         <Style x:Key="FoodSelectionCheckBoxLeft" TargetType="{x:Type CheckBox}">
-=======
-        <Style x:Key="FoodSelectionCheckBoxLeft" TargetType="CheckBox">
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="100"/>
             <Setter Property="FontSize" Value="15"/>
@@ -47,11 +27,7 @@
             <Setter Property="FontStyle" Value="Italic"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
-<<<<<<< HEAD
         <Style  TargetType="{x:Type CheckBox}">
-=======
-        <Style  TargetType="CheckBox">
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="130"/>
             <Setter Property="FontSize" Value="15"/>
@@ -59,7 +35,6 @@
             <Setter Property="FontStyle" Value="Italic"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
         </Style>
-<<<<<<< HEAD
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="Foreground" Value="AntiqueWhite"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -78,25 +53,12 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style x:Key="TypeMealCheckBox" TargetType="{x:Type CheckBox}">
-=======
-        <Style TargetType="MenuItem">
-            <Setter Property="Foreground" Value="AntiqueWhite"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-        </Style>
-        <Style x:Key="MenuInfoTextBlock" TargetType="TextBlock">
-            <Setter Property="Height" Value="163"/>
-            <Setter Property="Width" Value="48"/>
-            <Setter Property="TextAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="TypeMealCheckBox" TargetType="CheckBox">
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
             <Setter Property="Foreground" Value="AntiqueWhite"/>
             <Setter Property="Width" Value="90"/>
         </Style>
     </Window.Resources>
 
     <Grid >
-<<<<<<< HEAD
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
@@ -117,7 +79,7 @@
         </Menu>
 
         <Canvas   x:Name="StartWindow" 
-			Visibility="Visible"
+			Visibility="Hidden"
 			Background="BlueViolet">
             <TextBlock  Text="Hello Buddy,"
 				HorizontalAlignment="Left" 
@@ -204,7 +166,7 @@
 				Click="Proceed_Click"/>
         </Canvas>
         <Canvas x:Name="FoodSelectionWindow"
-			Visibility="Hidden"
+			Visibility="Visible"
 			Background="BlueViolet" >
 
             <TextBlock Text="Please, select food ingrediants for your menu:" 
@@ -221,131 +183,6 @@
 				Canvas.Left="100" 
 				Canvas.Top="105" 
 				Height="146"
-=======
-        <Menu IsMainMenu="True" Visibility="Visible" 
-                  Background="Coral">
-            <MenuItem Header="_Profile" 
-                      Name="Menu_Profile"
-                      Click="Menu_Profile_Click"/>
-            <MenuItem Header="_MyMenu"
-                      Name="Menu_MyMenu"
-                     Click="Menu_MyMenu_Click" />
-            <MenuItem Header="_Exercises" />
-            <MenuItem Header="_Calendar" />
-            <MenuItem Header="_ICompare" 
-                      Name="Menu_ICompare"
-                      Click="Menu_ICompare_Click"/>
-        </Menu>
-
-        <Canvas Name="StartWindow" 
-                Visibility="Visible"
-                Background="BlueViolet">
-            <TextBlock  Text="Hello Buddy,"
-                   HorizontalAlignment="Left" 
-                   Margin="206,10,0,0" 
-                   TextWrapping="Wrap" 
-                   VerticalAlignment="Top"
-                   FontSize="20"
-                   FontWeight="Bold"
-                   Foreground="AntiqueWhite"/>
-            <TextBlock Text="I need some information before we continue:" 
-                   HorizontalAlignment="Left"
-                   Margin="109,53,0,0" 
-                   TextWrapping="Wrap" 
-                   VerticalAlignment="Top"
-                   FontSize="15"
-                   FontWeight="SemiBold"
-                   Foreground="Bisque" Width="314" Grid.ColumnSpan="2"/>
-
-            <StackPanel  Name="UserInfoTextBlock" 
-                    Canvas.Top="109" 
-                    Canvas.Left="147" 
-                    Width="57"
-                    Height="142"                                 
-                    >
-                <TextBlock Text="Name:"
-                           Name="test"
-                           Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock  Text="Age:" 
-                            Style="{StaticResource userInfoTextBlock}" />
-                <TextBlock Text="Weight:"
-                           Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock  Text="Height:" 
-                            Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock  Text="Gender:" 
-                            Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock Text="Purpose"
-                           Style="{StaticResource userInfoTextBlock}"/>
-            </StackPanel>
-            <StackPanel Name="UserInfoTextBox"
-                Height="142" 
-                Canvas.Left="239" 
-                Canvas.Top="109" 
-                Width="129">
-                <TextBox  Text="Enter name" 
-                    Style="{StaticResource userInfoTextBox}"
-                    Name="userTextBoxName"
-                    TextChanged="UserTextBoxName_TextChanged"/>
-                <TextBox Text="Enter age" 
-                    Style="{StaticResource userInfoTextBox}"
-                    Name="userTextBoxAge"
-                    TextChanged="UserTextBoxAge_TextChanged"/>
-                <TextBox Text="Enter weight"
-                         Style="{StaticResource userInfoTextBox}"
-                         Name="userTextBoxWeight"
-                        TextChanged="UserTextBoxWeight_TextChanged"/>
-                <TextBox Text="Enter height"
-                         Style="{StaticResource userInfoTextBox}"
-                         Name="userTextBoxHeight"
-                         TextChanged="UserTextBoxHeight_TextChanged"/>
-                <Canvas Height="23">
-                    <RadioButton Content="Female"
-                                 Name="Female"
-                                 Width="60" 
-                                 Canvas.Left="0"
-                                 Click="Female_Click" />
-                    <RadioButton Content="Male"
-                                 Name="Male"
-                                 Width="60"
-                                 Canvas.Right="0"
-                                 Click="Male_Click"/>
-                </Canvas>
-                <ComboBox Name="choosenPurpose"
-                          SelectionChanged="ChoosenPurpose_SelectionChanged"
-                    FontStyle="Normal">
-
-                </ComboBox>
-
-            </StackPanel>
-            <Button Name="Proceed"
-                    Width="80"
-                    Height="26"
-                    Content="Proceed"                  
-                    Canvas.Left="288" 
-                    Canvas.Top="274"
-                    Background="Chartreuse"
-                    Click="Proceed_Click">
-            </Button>
-        </Canvas>
-        <Canvas Name="FoodSelectionWindow"
-                Visibility="Hidden"
-                Background="BlueViolet" >
-
-            <TextBlock Text="Please, select food ingrediants for your menu:" 
-                       FontSize="23"                       
-                       FontWeight="Bold"
-                       FontStyle="Oblique"
-                       Foreground="AntiqueWhite"
-                       Canvas.Left="10" 
-                       TextWrapping="Wrap"                     
-                       Canvas.Top="33"/>
-            <WrapPanel   Name="FoodSelectionStack"
-                         Orientation="Horizontal"
-                Width="277" 
-                        Canvas.Left="100" 
-                        Canvas.Top="105" 
-                        Height="146"
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
                         >
                 <CheckBox Content="Fruits"                     
                       />
@@ -364,7 +201,6 @@
                 <CheckBox Content="Meat" 
                           />
             </WrapPanel>
-<<<<<<< HEAD
             <Button x:Name="ProceedToProfile"
 				Width="80"
 				Height="26"
@@ -451,11 +287,16 @@
             </StackPanel>
 
 
-            <Calendar Canvas.Right="10" 
+            <Calendar Name="Calendar"
+                Canvas.Right="10" 
 				Width="178"
 				Background="YellowGreen" 
 				Height="163"
-				Canvas.Left="350" Canvas.Top="162"/>
+				Canvas.Left="350" Canvas.Top="162"
+                     
+                 SelectedDatesChanged="Calendar_SelectedDatesChanged">
+                
+            </Calendar>
             <Button Content="Generate Menu"
 				x:Name="Generate_Menu_Button"
 				Background="YellowGreen"
@@ -592,212 +433,6 @@
 				Canvas.Left="364"
 				Canvas.Top="115" 
 				Width="25"                   
-=======
-            <Button Name="ProceedToProfile"
-                    Width="80"
-                    Height="26"
-                    Content="Proceed"                  
-                    Canvas.Left="288" 
-                    Canvas.Top="274"
-                    Background="Chartreuse"
-                    Click="ProceedToProfile_Click">
-
-            </Button>
-        </Canvas>
-        <Canvas Name="Profile" Visibility="Hidden" Background="coral"
-                Margin="0,32,0,0"
-                >
-            <TextBlock Text="Your Profile"
-                       FontSize="21"
-                       Foreground="AntiqueWhite" Canvas.Top="57"></TextBlock>
-            <StackPanel Canvas.Top="80"
-                        Canvas.Left="300">
-                <TextBlock Text="Weight:"
-                           Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock  Text="Height:" 
-                            Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock  Text="Choosen food:" 
-                            Style="{StaticResource userInfoTextBlock}"/>
-
-            </StackPanel>
-            <StackPanel Canvas.Top="80"
-                        Canvas.Left="400">
-                <TextBlock Name="WeightProfile"
-                           Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock Name="HeightProfile"
-                           Style="{StaticResource userInfoTextBlock}"/>
-                <TextBlock Name="ListSelections" 
-                           Style="{StaticResource userInfoTextBlock}"
-                           Height="90"/>
-            </StackPanel>
-            <Image Height="213" 
-                   Canvas.Left="100" 
-                   Canvas.Top="80" 
-                   Width="128"
-                   />
-
-        </Canvas>
-        <Canvas Name="Menu" Visibility="Hidden"
-                Background="Coral"
-                 Margin="0,32,0,0">
-            <StackPanel Name="MenuInfo"
-                        Orientation="Horizontal"
-                       Background="YellowGreen"
-                       Width="337"
-                       Height="163" Canvas.Left="10">
-                <TextBlock Name="Name_MenuInfo" 
-                           Text="Name"
-                           TextWrapping="Wrap"
-                           TextAlignment="Left"
-                           Width="60"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Calories_MenuInfo" 
-                           Text="Calories"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Carbs_MenuInfo" 
-                           Text="Carbs"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Proteins_MenuInfo" 
-                           Text="Proteins"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Name="Lipids_MenuInfo" 
-                           Text="Lipids"
-                           Style="{StaticResource MenuInfoTextBlock}"/>
-                <TextBlock Style="{StaticResource MenuInfoTextBlock}"/>
-
-            </StackPanel>
-            <WrapPanel Name="TypeMealsCheckBox"
-                       Background="Coral"
-                       Width="272" Canvas.Left="10" Canvas.Top="171" Height="66"
-                       >
-
-                <CheckBox Content="Breakfast"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Soup"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Appetiser"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Salad"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Main"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Dessert"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-                <CheckBox Content="Liquid"
-                          Style="{StaticResource TypeMealCheckBox}"/>
-
-            </WrapPanel>
-            <Calendar Canvas.Right="10" 
-                      Width="178"
-                      Background="YellowGreen" 
-                      Height="163"
-                      Canvas.Left="354"/>
-            <Button Content="Generate Menu"
-                    Name="Generate_Menu_Button"
-                    Background="YellowGreen"
-                    Canvas.Left="272"
-                    Canvas.Top="171" 
-                    Width="90"
-                    Click="Generate_Menu_Button_Click" RenderTransformOrigin="0.267,-0.591"/>
-            <ProgressBar Name="ProgressBar"
-                Height="10" 
-                         Canvas.Left="137" 
-                         Canvas.Top="84" 
-                         Width="100"
-                         Minimum="0"
-                         Maximum="100"
-                        Background="YellowGreen"
-                         Foreground="BlueViolet"
-                         Opacity="100"
-                         BorderBrush="YellowGreen"
-                         BorderThickness="0"
-                         />
-
-        </Canvas>
-        <Canvas Name="Exercises" Visibility="Hidden"
-                Background="Coral"
-                Margin="0,32,0,0">
-            <Canvas Name="BodyPartsStruct"
-                   Canvas.Left="55"
-                   Canvas.Top="35" 
-                   Width="197"
-                    Height="208"
-                   
-                    Visibility="Visible">
-
-
-            </Canvas>
-            <Image Height="16" 
-                   Canvas.Left="163" 
-                   Source="Point.png" 
-                   Stretch="Uniform" 
-                   Canvas.Top="197" 
-                   Width="16"
-                   />
-
-            <Image Height="208" 
-                   Canvas.Left="55" 
-                   Source="Image\HumanBody3.png"
-                   Stretch="Fill" 
-                   Canvas.Top="35"
-                   Width="197"
-                 />
-
-        </Canvas>
-        <Canvas Name="Icompare"
-                Visibility="Hidden"
-                Background="Coral"
-                 Margin="0,32,0,0">
-            <ComboBox Name="FirstFoodCombo"
-                Canvas.Left="42" 
-                Canvas.Top="86" 
-                Width="120"
-                     />
-            <ComboBox Name="SecondFoodCombo"
-                Canvas.Left="349" 
-                Canvas.Top="86"
-                Width="120"/>
-            <Button Name="CompareMeals"
-                Content="Compare" 
-                Canvas.Left="223" 
-                Canvas.Top="86" 
-                Width="75"
-              Click="CompareMeals_Click" >
-
-            </Button>
-            <TextBlock Name="TestCompare"
-                       Width="150"
-                       Height="86"
-                       Background="Yellow">
-
-            </TextBlock>
-            <Button Name="FirstComparer"
-                    Visibility="Hidden"
-                    Content="Add to Menu" 
-                    Canvas.Left="87"
-                    Canvas.Top="113" 
-                    Width="75"
-                  Click="FirstComparer_Click" />
-            <Button Name="SecondComparer"
-                    Visibility="Hidden"
-                    Content="Add to Menu" 
-                    Canvas.Left="394"
-                    Canvas.Top="113" 
-                    Width="75"
-                    Click="SecondComparer_Click"
-                   />
-            <Image Name="FirstComparerImage"
-                Height="20" 
-                   Canvas.Left="57"
-                   Canvas.Top="115" 
-                   Width="25"
-                   />
-            <Image Name="SecondComparerImage"
-                   Height="20" 
-                   Canvas.Left="364"
-                   Canvas.Top="115" 
-                   Width="25"                   
->>>>>>> 69980c9c0026f71747671c2698c9a33bc69f4445
                    />
         </Canvas>
 

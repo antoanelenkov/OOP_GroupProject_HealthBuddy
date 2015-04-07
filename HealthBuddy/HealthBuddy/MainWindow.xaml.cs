@@ -123,7 +123,7 @@ namespace HealthBuddy
         }
 
         List<object> selectedIngrediants = new List<object>();
-        List<object> unSelectedIngrediants = new List<object>() {"Fruits", "Vegetables", "Nuts", "Legumes", "Grain", "Milk", "Fish" , "Meat" };
+        List<object> unSelectedIngrediants = new List<object>() {"Fruit", "Vegetables", "Nuts", "Legumes", "Grain", "Milk", "Fish" , "Meat" };
         // GO TO: MyMenu 
         private void ProceedToProfile_Click(object sender, RoutedEventArgs e)
         {
@@ -400,16 +400,16 @@ Regards, your Healty Buddy  :* ");
         private void SelectFruit_Click(object sender, RoutedEventArgs e)
         {            
             MessageBox.Show("Fruit selected!");
-            if (selectedIngrediants.Contains("Fruits"))
+            if (selectedIngrediants.Contains("Fruit"))
             {
-                selectedIngrediants.Remove("Fruits");
-                unSelectedIngrediants.Add("Fruits");
+                selectedIngrediants.Remove("Fruit");
+                unSelectedIngrediants.Add("Fruit");
             }
 
             else
             {
-                selectedIngrediants.Add("Fruits");
-                unSelectedIngrediants.Remove("Fruits");
+                selectedIngrediants.Add("Fruit");
+                unSelectedIngrediants.Remove("Fruit");
             }
         }
 

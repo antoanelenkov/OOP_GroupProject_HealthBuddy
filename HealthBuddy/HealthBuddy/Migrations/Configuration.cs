@@ -87,17 +87,17 @@ namespace HealthBuddy.Migrations
                    new Main { Name = "grilled pork steak with BBQ saus", Calories = 260m, Carbohydrates = 20m, Proteins = 0m, Fats = 20m, Portion_Size = 200m, Calories_Per_Portions = 520m, Ingredients = "meat" },
                    new Main { Name = "roast lamb leg", Calories = 190m, Carbohydrates = 22m, Proteins = 0m, Fats = 11.3m, Portion_Size = 250m, Calories_Per_Portions = 474.25m, Ingredients = "meat" },
                    new Main { Name = "breast lamb chops", Calories = 416m, Carbohydrates = 19.5m, Proteins = 0m, Fats = 37.5m, Portion_Size = 130m, Calories_Per_Portions = 540.15m, Ingredients = "meat" },
-                   new Main { Name = "grilled salmon", Calories = 170m, Carbohydrates = 20m, Proteins = 0m, Fats = 10m, Portion_Size = 300m, Calories_Per_Portions = 510m, Ingredients = "meat" },
-                   new Main { Name = "grilled salmon with fried rise ", Calories = 125m, Carbohydrates = 10m, Proteins = 10m, Fats = 5m, Portion_Size = 200m, Calories_Per_Portions = 250m, Ingredients = "meat" },
-                   new Main { Name = "cooked haddock", Calories = 101m, Carbohydrates = 23m, Proteins = 0m, Fats = 1m, Portion_Size = 200m, Calories_Per_Portions = 202m, Ingredients = "meat" },
-                   new Main { Name = "smoked haddock", Calories = 119m, Carbohydrates = 27.4m, Proteins = 0m, Fats = 1m, Portion_Size = 200m, Calories_Per_Portions = 237.2m, Ingredients = "meat" },
-                   new Main { Name = "smoked carp", Calories = 164m, Carbohydrates = 24m, Proteins = 0m, Fats = 7.5m, Portion_Size = 200m, Calories_Per_Portions = 327m, Ingredients = "meat" },
-                   new Main { Name = "cooked carp", Calories = 135m, Carbohydrates = 19m, Proteins = 0m, Fats = 6.5m, Portion_Size = 200m, Calories_Per_Portions = 269m, Ingredients = "meat" },
+                   new Main { Name = "grilled salmon", Calories = 170m, Carbohydrates = 20m, Proteins = 0m, Fats = 10m, Portion_Size = 300m, Calories_Per_Portions = 510m, Ingredients = "fish" },
+                   new Main { Name = "grilled salmon with fried rise ", Calories = 125m, Carbohydrates = 10m, Proteins = 10m, Fats = 5m, Portion_Size = 200m, Calories_Per_Portions = 250m, Ingredients = "fish" },
+                   new Main { Name = "cooked haddock", Calories = 101m, Carbohydrates = 23m, Proteins = 0m, Fats = 1m, Portion_Size = 200m, Calories_Per_Portions = 202m, Ingredients = "fish" },
+                   new Main { Name = "smoked haddock", Calories = 119m, Carbohydrates = 27.4m, Proteins = 0m, Fats = 1m, Portion_Size = 200m, Calories_Per_Portions = 237.2m, Ingredients = "fish" },
+                   new Main { Name = "smoked carp", Calories = 164m, Carbohydrates = 24m, Proteins = 0m, Fats = 7.5m, Portion_Size = 200m, Calories_Per_Portions = 327m, Ingredients = "fish" },
+                   new Main { Name = "cooked carp", Calories = 135m, Carbohydrates = 19m, Proteins = 0m, Fats = 6.5m, Portion_Size = 200m, Calories_Per_Portions = 269m, Ingredients = "fish" },
                  //  new Main { Name = "medium boiled egg", Calories = 156m, Carbohydrates = 14m, Proteins = 1.2m, Fats = 10.6m, Portion_Size = 50m, Calories_Per_Portions = 78.1m, Ingredients = "milk" },
-                   new Main { Name = "medium tomato", Calories = 25m, Carbohydrates = 1.1m, Proteins = 4.5m, Fats = 0.3m, Portion_Size = 123m, Calories_Per_Portions = 30.873m, Ingredients = "vegetable" },
-                   new Main { Name = "half cucumber ", Calories = 17m, Carbohydrates = 0.6m, Proteins = 3.5m, Fats = 0.1m, Portion_Size = 150m, Calories_Per_Portions = 25.95m, Ingredients = "vegetable" },
-                   new Main { Name = "baked sweet potato", Calories = 101m, Carbohydrates = 2.2m, Proteins = 22.5m, Fats = 0.2m, Portion_Size = 150m, Calories_Per_Portions = 150.9m, Ingredients = "vegetable" },
-                   new Main { Name = "baked potato", Calories = 127m, Carbohydrates = 3.2m, Proteins = 28m, Fats = 0.2m, Portion_Size = 270m, Calories_Per_Portions = 341.82m, Ingredients = "vegetable" },
+                   new Main { Name = "medium tomato", Calories = 25m, Carbohydrates = 1.1m, Proteins = 4.5m, Fats = 0.3m, Portion_Size = 123m, Calories_Per_Portions = 30.873m, Ingredients = "vegetables" },
+                   new Main { Name = "half cucumber ", Calories = 17m, Carbohydrates = 0.6m, Proteins = 3.5m, Fats = 0.1m, Portion_Size = 150m, Calories_Per_Portions = 25.95m, Ingredients = "vegetables" },
+                   new Main { Name = "baked sweet potato", Calories = 101m, Carbohydrates = 2.2m, Proteins = 22.5m, Fats = 0.2m, Portion_Size = 150m, Calories_Per_Portions = 150.9m, Ingredients = "vegetables" },
+                   new Main { Name = "baked potato", Calories = 127m, Carbohydrates = 3.2m, Proteins = 28m, Fats = 0.2m, Portion_Size = 270m, Calories_Per_Portions = 341.82m, Ingredients = "vegetables" },
                   // new Main { Name = "almonds", Calories = 644m, Carbohydrates = 22.9m, Proteins = 23.4m, Fats = 51m, Portion_Size = 50m, Calories_Per_Portions = 322.1m, Ingredients = "nuts" },
                  //  new Main { Name = "walnuts", Calories = 615m, Carbohydrates = 15.2m, Proteins = 13.7m, Fats = 55.5m, Portion_Size = 50m, Calories_Per_Portions = 307.55m, Ingredients = "nuts" },
                  //  new Main { Name = "hazelnuts", Calories = 717m, Carbohydrates = 15.2m, Proteins = 17.8m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 358.5m, Ingredients = "nuts" },
@@ -154,10 +154,10 @@ namespace HealthBuddy.Migrations
                 new Soup { Name = "tomato soup with pasta", Calories = 35m, Carbohydrates = 1.5m, Proteins = 3.3m, Fats = 1.8m, Portion_Size = 350m, Calories_Per_Portions = 123.9m, Ingredients = "vegetables grain" },
                 new Soup { Name = "vegetable soup", Calories = 48m, Carbohydrates = 1.7m, Proteins = 6.2m, Fats = 1.8m, Portion_Size = 350m, Calories_Per_Portions = 167.3m, Ingredients = "vegetables" },
                 new Soup { Name = "potato soup", Calories = 54m, Carbohydrates = 1.3m, Proteins = 9.5m, Fats = 1.2m, Portion_Size = 350m, Calories_Per_Portions = 189m, Ingredients = "vegetables" },
-                new Soup { Name = "fruit soup with apples", Calories = 49m, Carbohydrates = 0.1m, Proteins = 11.8m, Fats = 0.1m, Portion_Size = 350m, Calories_Per_Portions = 169.75m, Ingredients = "fruits" },
+                new Soup { Name = "fruit soup with apples", Calories = 49m, Carbohydrates = 0.1m, Proteins = 11.8m, Fats = 0.1m, Portion_Size = 350m, Calories_Per_Portions = 169.75m, Ingredients = "fruit" },
                 new Soup { Name = "fish soup ", Calories = 45m, Carbohydrates = 3.4m, Proteins = 5.5m, Fats = 1m, Portion_Size = 350m, Calories_Per_Portions = 156.1m, Ingredients = "fish" },
                 new Soup { Name = "spanich soup", Calories = 43m, Carbohydrates = 2.2m, Proteins = 6.6m, Fats = 0.9m, Portion_Size = 350m, Calories_Per_Portions = 151.55m, Ingredients = "vegetables" },
-                new Soup { Name = "green beans soup", Calories = 68m, Carbohydrates = 3.2m, Proteins = 11.2m, Fats = 1.2m, Portion_Size = 350m, Calories_Per_Portions = 239.4m, Ingredients = "beans" },
+                new Soup { Name = "green beans soup", Calories = 68m, Carbohydrates = 3.2m, Proteins = 11.2m, Fats = 1.2m, Portion_Size = 350m, Calories_Per_Portions = 239.4m, Ingredients = "legumes" },
                 new Soup { Name = "shkembe soup", Calories = 84m, Carbohydrates = 16m, Proteins = 0m, Fats = 2.2m, Portion_Size = 350m, Calories_Per_Portions = 293.3m, Ingredients = "meat" }
 );
             //#endregion
@@ -174,12 +174,12 @@ namespace HealthBuddy.Migrations
                 //new Dessert { Name = "cup of grape", Calories = 81m, Carbohydrates = 0.8m, Proteins = 19m, Fats = 0.15m, Portion_Size = 150m, Calories_Per_Portions = 120.825m, Ingredients = "fruit" },
                 //new Dessert { Name = "piece of watermelon", Calories = 61m, Carbohydrates = 0.6m, Proteins = 14.1m, Fats = 0.25m, Portion_Size = 290m, Calories_Per_Portions = 177.045m, Ingredients = "fruit" },
                 //new Dessert { Name = "almond cake", Calories = 310m, Carbohydrates = 8.5m, Proteins = 65.5m, Fats = 1.6m, Portion_Size = 130m, Calories_Per_Portions = 403.52m, Ingredients = "nuts sweet milk" },
-                new Dessert { Name = "cacao bisquits", Calories = 444m, Carbohydrates = 6.1m, Proteins = 51.4m, Fats = 23.8m, Portion_Size = 130m, Calories_Per_Portions = 577.46m, Ingredients = "sweet grain" },
-                new Dessert { Name = "bisquit cake with fruits", Calories = 438m, Carbohydrates = 5.6m, Proteins = 58.8m, Fats = 20m, Portion_Size = 130m, Calories_Per_Portions = 568.88m, Ingredients = "sweet grain milk" },
-                new Dessert { Name = "cake with nuts and dry fruits", Calories = 398m, Carbohydrates = 6.4m, Proteins = 53.5m, Fats = 17.6m, Portion_Size = 130m, Calories_Per_Portions = 517.4m, Ingredients = "sweet grain nuts fruits" },
-                new Dessert { Name = "cheesecake", Calories = 335m, Carbohydrates = 13.9m, Proteins = 39.7m, Fats = 13.4m, Portion_Size = 130m, Calories_Per_Portions = 435.5m, Ingredients = "milk sweet" },
-                new Dessert { Name = "tiramissu", Calories = 385m, Carbohydrates = 5m, Proteins = 35m, Fats = 25m, Portion_Size = 150m, Calories_Per_Portions = 577.5m, Ingredients = "milk sweet" },
-                new Dessert { Name = "strawberry with cream", Calories = 132m, Carbohydrates = 1.1m, Proteins = 8.4m, Fats = 10.4m, Portion_Size = 130m, Calories_Per_Portions = 171.08m, Ingredients = "fruits milk" }
+                new Dessert { Name = "cacao bisquits", Calories = 444m, Carbohydrates = 6.1m, Proteins = 51.4m, Fats = 23.8m, Portion_Size = 130m, Calories_Per_Portions = 577.46m, Ingredients = "grain" },
+                new Dessert { Name = "bisquit cake with fruits", Calories = 438m, Carbohydrates = 5.6m, Proteins = 58.8m, Fats = 20m, Portion_Size = 130m, Calories_Per_Portions = 568.88m, Ingredients = "grain milk" },
+                new Dessert { Name = "cake with nuts and dry fruits", Calories = 398m, Carbohydrates = 6.4m, Proteins = 53.5m, Fats = 17.6m, Portion_Size = 130m, Calories_Per_Portions = 517.4m, Ingredients = "grain nuts fruit" },
+                new Dessert { Name = "cheesecake", Calories = 335m, Carbohydrates = 13.9m, Proteins = 39.7m, Fats = 13.4m, Portion_Size = 130m, Calories_Per_Portions = 435.5m, Ingredients = "milk" },
+                new Dessert { Name = "tiramissu", Calories = 385m, Carbohydrates = 5m, Proteins = 35m, Fats = 25m, Portion_Size = 150m, Calories_Per_Portions = 577.5m, Ingredients = "milk" },
+                new Dessert { Name = "strawberry with cream", Calories = 132m, Carbohydrates = 1.1m, Proteins = 8.4m, Fats = 10.4m, Portion_Size = 130m, Calories_Per_Portions = 171.08m, Ingredients = "fruit milk" }
 );
             #endregion
             #region Add Liquid to DB
@@ -188,7 +188,7 @@ namespace HealthBuddy.Migrations
                // new Liquid { Name = "cup of orange juice", Calories = 46, Carbohydrates = 0.6m, Proteins = 10.2m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" },
                 //new Liquid { Name = "piece of pineapple", Calories = 66, Carbohydrates = 0.7m, Proteins = 15.6m, Fats = 0.1m, Portion_Size = 170m, Calories_Per_Portions = 112.37m, Ingredients = "fruit" },
                 //new Liquid { Name = "cup of pineapple juice", Calories = 67, Carbohydrates = 0.5m, Proteins = 16m, Fats = 0.1m, Portion_Size = 250m, Calories_Per_Portions = 167.25m, Ingredients = "fruit" },
-               new Liquid { Name = "cup of apple juice", Calories = 46m, Carbohydrates = 0.3m, Proteins = 10.5m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruits" }
+               new Liquid { Name = "cup of apple juice", Calories = 46m, Carbohydrates = 0.3m, Proteins = 10.5m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" }
 );
             #endregion
             #region Add Appetiser to DB

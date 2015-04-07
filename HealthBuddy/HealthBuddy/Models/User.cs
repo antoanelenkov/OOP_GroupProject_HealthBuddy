@@ -3,8 +3,10 @@
     using System;
     using System.Collections.Generic;
     using HealthBuddy.Calculator;
+    using HealthBuddy.Enums;
+    using HealthBuddy.Interfaces;
 
-    public class User 
+    public class User : IUser
     {
         //private double calories_per_day;
 
@@ -68,11 +70,5 @@
 
         //    return BMR;
         //}
-
     }
-    public enum UserGender
-    {
-        Female, Male
-    }
-
 }

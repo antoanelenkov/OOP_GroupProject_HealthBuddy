@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthBuddy.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HealthBuddy.Calculator
 {
-    abstract class DietCalculator
+    abstract class DietCalculator : IDietCalculator
     {
         private double weightOfPerson;
         private double  heightOfPerson;
@@ -52,8 +53,5 @@ namespace HealthBuddy.Calculator
         }
     }
 
-    public enum UserPurpose
-    {
-        Gain_Weight, Loose_Weight, Keep_Weight
-    }
+    
 }

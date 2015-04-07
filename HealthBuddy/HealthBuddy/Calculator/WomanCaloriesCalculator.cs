@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HealthBuddy;
+using HealthBuddy.Interfaces;
 
 namespace HealthBuddy.Calculator
 {
@@ -11,7 +12,7 @@ namespace HealthBuddy.Calculator
     /// Calculates BMR by different formula depending on the gender
     /// </summary>
     /// <returns></returns>
-    class WomanCaloriesCalculator:WomenDietCalculator
+    class WomanCaloriesCalculator : WomenDietCalculator, IDietCalculator
     {
         private const int START_COEF = 655;
         private const double WEIGHT_COEF = 9.6;

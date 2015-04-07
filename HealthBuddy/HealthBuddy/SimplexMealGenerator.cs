@@ -7,10 +7,11 @@ using HealthBuddy.Models;
 using Microsoft.SolverFoundation.Common;
 using Microsoft.SolverFoundation.Solvers;
 using Microsoft.SolverFoundation.Services;
+using HealthBuddy.Interfaces;
 
 namespace HealthBuddy
 {
-    class SimplexMealGenerator
+    class SimplexMealGenerator : ISimplexMealCalculator
     {
         List<Meal> meals;
         List<int> mealPortions;

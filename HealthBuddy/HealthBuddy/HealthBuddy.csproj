@@ -76,8 +76,10 @@
     <Compile Include="Engine\InteractionManager.cs" />
     <Compile Include="Enums\UserGender.cs" />
     <Compile Include="Enums\UserPurpose.cs" />
+    <Compile Include="Interfaces\ICaloriesCalculator.cs" />
     <Compile Include="Interfaces\IDietCalculator.cs" />
     <Compile Include="Interfaces\IMeal.cs" />
+    <Compile Include="Interfaces\ISimplexMealCalculator.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\History.cs" />

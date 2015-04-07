@@ -3,8 +3,9 @@
     using HealthBuddy.Interfaces;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Text;
 
-    public  class Meal : IMeal 
+    public class Meal : IMeal
     {
         private string name;
         private decimal calories;
@@ -49,7 +50,7 @@
             set { this.proteins = value; }
         }
 
-       // [Range(0, 100001)]
+        // [Range(0, 100001)]
         public decimal Carbohydrates
         {
             get { return this.carbohydrates; }
@@ -102,12 +103,24 @@
         {
             foreach (var ingredient in unSelectedIngrediants)
             {
-                if(x.Ingredients.Contains(ingredient.ToString().ToLower()))
+                if (x.Ingredients.Contains(ingredient.ToString().ToLower()))
                 {
                     return false;
                 }
             }
             return true;
+        }
+
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+            
+            result.AppendLine(string.Format("Calories: {0}", this.Calories));
+            result.AppendLine(string.Format("Carbohydrates: {0}", this.Carbohydrates));
+            result.AppendLine(string.Format("Proteins: {0}", this.Proteins));
+            result.AppendLine(string.Format("Fats: {0}", this.Fats));
+            result.AppendLine(string.Format("Portion Size: {0}", this.Portion_Size));
+            return result.ToString();
         }
     }
 }

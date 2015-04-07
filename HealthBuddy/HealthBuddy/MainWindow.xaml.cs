@@ -40,15 +40,11 @@ namespace HealthBuddy
                                   .Concat(context.Soups.Select(x => x.Name).ToList());
         public MainWindow()
         {
-
-            //Database.SetInitializer(new DbConfiguration(DbConfiguration));
             InitializeComponent();
             // choosenPurpose.ItemsSource = typeof(DietCalculator.UserPurpose).GetEnumNames().Select(x => x.Replace('_', ' ')); Why UserPurposi is in class Calculator?
 
             SecondFoodCombo.ItemsSource = fullMealList;
             FirstFoodCombo.ItemsSource = fullMealList;
-
-
         }
         #region Get User's info
         User user = new User("Maria", 50, UserGender.Female, 40, 200, UserPurpose.Keep_Weight, new List<string>());
@@ -108,7 +104,7 @@ namespace HealthBuddy
         private void ChoosenPurpose_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // TODO: Do this on group meeting 
-            throw new NotImplementedException("Still not implemented, do not choose purpose for the moment :) ");
+            // throw new NotImplementedException("Still not implemented, do not choose purpose for the moment :) ");
             UserPurpose selectedColor = (UserPurpose)(choosenPurpose.SelectedItem as PropertyInfo).GetValue(null, null);
             user.Purpose = selectedColor;
             // test.Text = user.Purpose.ToString();
@@ -123,7 +119,7 @@ namespace HealthBuddy
         }
 
         List<object> selectedIngrediants = new List<object>();
-        List<object> unSelectedIngrediants = new List<object>() {"Fruit", "Vegetables", "Nuts", "Legumes", "Grain", "Milk", "Fish" , "Meat" };
+        List<object> unSelectedIngrediants = new List<object>() { "Fruit", "Vegetables", "Nuts", "Legumes", "Grain", "Milk", "Fish", "Meat" };
         // GO TO: MyMenu 
         private void ProceedToProfile_Click(object sender, RoutedEventArgs e)
         {
@@ -152,7 +148,6 @@ namespace HealthBuddy
             childs = childs.Where(x => x.IsChecked == true).ToList();
             selectedTypeMeals = childs.Select(x => x.Content).ToList();
 
-            // TODO: Set Loading giff while the data is loading :)))
             try
             {
                 // var context = new HealthBuddyContext();
@@ -170,28 +165,11 @@ namespace HealthBuddy
                         raw = ctx.Database.SqlQuery<Meal>(query, table).ToList(); // TODO: Edit to IQuerable<Meal>
 
                         List<string> strings = unSelectedIngrediants.Select(c => c.ToString()).ToList();
-
                         //test = raw.Where(x => strings.Any(y => x.Ingredients.Split(' ').Contains(y))).ToList();  // Ivaylo Kenov
 
                         test = raw.Where(x => Meal.Filter(x, unSelectedIngrediants)).Select(x => x).ToList();
-
-
-
                     }
                     filtredMeals = filtredMeals.Concat(test).ToList();
-                    // DEBUG 
-                    //var window = new Window();
-                    //for (int index = 0; index < filtredMeals.Count; index++)
-                    //{
-                    //    window.Content += filtredMeals[index].GetType().Name;
-                    //    window.Content += filtredMeals[index].Name;
-                    //    window.Content += "\n";
-                    //    filtredMeals[index] = Engine.InteractionManager.ConvertToTypeMeal(filtredMeals[index], table);
-                    //    window.Content += filtredMeals[index].GetType().Name;
-                    //    window.Content += filtredMeals[index].Name;
-                    //    window.Content += "\n";
-                    //}
-                    //MessageBox.Show(window.Content.ToString());
                 }
 
                 SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, 1875); // TODO: Set user's Calories
@@ -211,20 +189,14 @@ namespace HealthBuddy
                 ClearMenuInfoBar();
 
                 PrintMenuInfo(menuItems);
-                // Add to History
 
+                // Add to History
                 var newHistory = new History();
                 newHistory.Date = (DateTime)Calendar.SelectedDate.Value == null ? DateTime.Now : Calendar.SelectedDate.Value; // TODO: Change with value from calendar
                 newHistory.Menu = menuItems;
                 var date = Calendar.SelectedDate.Value;
-                AllHistory.Remove(AllHistory.Where(x => x.Date == date).Select(z=>z).FirstOrDefault());
+                AllHistory.Remove(AllHistory.Where(x => x.Date == date).Select(z => z).FirstOrDefault());
                 AllHistory.Add(newHistory);
-
-
-
-                //var searchedHistory = AllHistory.Where(x => x.Date == Calendar.SelectedDate).Select(m => m.Menu).First();
-                //PrintMenuInfo(searchedHistory);
-
 
                 //TEST
                 User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());
@@ -233,7 +205,6 @@ namespace HealthBuddy
                 int caloriesOfperson1 = calcCalories.CalculateCalories();
                 double waterOfperson1 = calcWater.CalculateWaterNeeds();
                 //TEST
-
             }
             catch (Exception ex)
             {
@@ -330,9 +301,6 @@ namespace HealthBuddy
                 {
                     FirstComparerImage.Source = new BitmapImage(uriSource);
                     SecondComparerImage.Source = new BitmapImage(uriSourceNot);
-                    TestCompare.Text += first.Name;
-                    TestCompare.Text += "\n" + first.Calories;
-                    TestCompare.Text += "\n" + second.Calories;
 
                 }
 
@@ -340,21 +308,16 @@ namespace HealthBuddy
                 {
                     FirstComparerImage.Source = new BitmapImage(uriSourceNot);
                     SecondComparerImage.Source = new BitmapImage(uriSource);
-                    TestCompare.Text += second.Name;
-                    TestCompare.Text += "\n" + second.Calories;
-                    TestCompare.Text += "\n" + first.Calories;
                 }
                 else
                 {
                     FirstComparerImage.Source = new BitmapImage(uriSource);
-                    SecondComparerImage.Source = new BitmapImage(uriSource);
-                    TestCompare.Text = "Equal";
+                    SecondComparerImage.Source = new BitmapImage(uriSource);                   
                 }
 
-                var neshtosi = context.Desserts.Where(x => x.Name == "Raffaelo").First();
-                TestCompare.Text += neshtosi.Name;
-                TestCompare.Text += neshtosi.Ingredients.First();
-                TestCompare.Text += string.Join("\n", neshtosi.Ingredients);
+                TestCompareFirst.Content += first.ToString();
+                TestCompareSecond.Content += second.ToString();
+               
             }
             catch (Exception ex)
             {
@@ -398,7 +361,7 @@ Regards, your Healty Buddy  :* ");
         }
 
         private void SelectFruit_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             MessageBox.Show("Fruit selected!");
             if (selectedIngrediants.Contains("Fruit"))
             {
@@ -517,10 +480,5 @@ Regards, your Healty Buddy  :* ");
                 unSelectedIngrediants.Remove("Meat");
             }
         }
-
-
-
-
-
     }
 }

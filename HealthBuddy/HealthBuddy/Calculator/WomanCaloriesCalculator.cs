@@ -12,7 +12,7 @@ namespace HealthBuddy.Calculator
     /// Calculates BMR by different formula depending on the gender
     /// </summary>
     /// <returns></returns>
-    class WomanCaloriesCalculator : WomenDietCalculator, IDietCalculator
+    class WomanCaloriesCalculator : WomenDietCalculator, IDietCalculator, ICaloriesCalculator
     {
         private const int START_COEF = 655;
         private const double WEIGHT_COEF = 9.6;

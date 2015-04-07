@@ -191,7 +191,7 @@
 				Click="Proceed_Click"/>
         </Canvas>
         <Canvas Name="FoodSelectionWindow"
-			Visibility="Visible"
+			Visibility="Hidden"
 			Background="BlueViolet" >
 
             <TextBlock Text="Please, select food ingrediants for your menu:" 
@@ -367,7 +367,9 @@
                     Canvas.Top="165">
                 <Button  Name="SelectFruit"
                          Click="SelectFruit_Click"
-                    Style="{StaticResource RoundButtonFood}">
+                    Style="{StaticResource RoundButtonFood}"
+                         Focusable="True">
+
                     <Button.Template x:Uid="OnOffButton">
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -385,6 +387,19 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
+                    <TextBlock>
+                        <TextBlock.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Text" Value=" " />
+                                <Style.Triggers>
+                                    <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                        <Setter Property="TextBlock.Text" Value="Fruits" />
+                                        <Setter Property="TextBlock.Background" Value="NavajoWhite"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </Button>
                 <Button  Name="SelectVegetable"                         
                        Click="SelectVegetable_Click"
@@ -555,7 +570,7 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-           
+
         </Canvas>
         <Canvas x:Name="Exercises" Visibility="Hidden"
 			Background="Orange"
@@ -590,22 +605,29 @@
             <ComboBox x:Name="FirstFoodCombo"
 				Canvas.Left="42" 
 				Canvas.Top="86" 
-				Width="120" />
+				Width="120"
+                Background="#FFE039"/>
 
             <ComboBox x:Name="SecondFoodCombo"
 				Canvas.Left="349" 
 				Canvas.Top="86"
-				Width="120"/>
+				Width="120"
+                Background="#FFE039"/>
             <Button x:Name="CompareMeals"
 				Content="Compare" 
 				Canvas.Left="223" 
 				Canvas.Top="86" 
 				Width="75"
+                Background="Green"
 				Click="CompareMeals_Click" />
-            <TextBlock x:Name="TestCompare"
-				Width="427"
-				Height="105"
-				Background="Yellow" Canvas.Left="42" Canvas.Top="140"/>
+            <Button x:Name="TestCompareFirst"
+				Width="120"
+				Height="101"
+				Background="#FFE039" Canvas.Left="42" Canvas.Top="140"/>
+            <Button x:Name="TestCompareSecond"
+            	Width="120"
+            	Height="101"
+            	Background="#FFE039" Canvas.Left="349" Canvas.Top="140"/>
             <Button x:Name="FirstComparer"
 				Visibility="Hidden"
 				Content="Add to Menu" 
@@ -633,6 +655,7 @@
 				Canvas.Top="115" 
 				Width="25"                   
                    />
+            
         </Canvas>
 
     </Grid>

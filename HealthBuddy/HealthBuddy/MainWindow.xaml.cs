@@ -53,53 +53,31 @@
         {
             InitializeComponent();
             // choosenPurpose.ItemsSource = typeof(DietCalculator.UserPurpose).GetEnumNames().Select(x => x.Replace('_', ' ')); Why UserPurposi is in class Calculator?
-
+            choosenPurpose.ItemsSource = typeof(UserPurpose).GetEnumNames().Select(x => x.Replace('_', ' '));
             SecondFoodCombo.ItemsSource = fullMealList;
             FirstFoodCombo.ItemsSource = fullMealList;
         }
         #region Get User's info
-        User user = new User("Maria", 50, UserGender.Female, 40, 200, UserPurpose.Keep_Weight, new List<string>());
-
+        User user = new User("Anonymous", 50, UserGender.Female, 40, 200, UserPurpose.Keep_Weight, new List<string>());
         private void UserTextBoxName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var name = sender as TextBox;
-            name.GotFocus += ClearDefaultText_userInfoTextBox;
-            user.Name = name.Text;
-        }
+            Engine.GetUserInfo.GetUserName(user, sender);
+        }        
 
         private void UserTextBoxAge_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var ageBox = sender as TextBox;
-            ageBox.GotFocus += ClearDefaultText_userInfoTextBox;
-
-            int age = new int();
-            int.TryParse(ageBox.Text, out age);
-            user.Age = age;
-        }
+            Engine.GetUserInfo.GetUserAge(user, sender);
+        }      
 
         // TODO: Check the cultureInfo for the double values (replace ','->'.') set to invariant?
         private void UserTextBoxWeight_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var weightBox = sender as TextBox;
-            weightBox.GotFocus += ClearDefaultText_userInfoTextBox;
-
-            double weight = new double();
-            double.TryParse(weightBox.Text, out weight);
-            user.Weight = weight;
+            Engine.GetUserInfo.GetUserWeight(user, sender);
         }
-
+        
         private void UserTextBoxHeight_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var heightBox = sender as TextBox;
-            heightBox.GotFocus += ClearDefaultText_userInfoTextBox;
-            double height = new double();
-            double.TryParse(heightBox.Text, out height);
-            user.Height = height;
-        }
-
-        private void ClearDefaultText_userInfoTextBox(object sender, RoutedEventArgs e)
-        {
-            (sender as TextBox).Text = string.Empty;
+            Engine.GetUserInfo.GetUserHeight(user, sender);
         }
 
         private void Female_Click(object sender, RoutedEventArgs e)
@@ -116,8 +94,10 @@
         {
             // TODO: Do this on group meeting 
             // throw new NotImplementedException("Still not implemented, do not choose purpose for the moment :) ");
-            UserPurpose selectedColor = (UserPurpose)(choosenPurpose.SelectedItem as PropertyInfo).GetValue(null, null);
-            user.Purpose = selectedColor;
+           // var purpose = new object();
+            // purpose = (choosenPurpose.SelectedItem as PropertyInfo).GetValue(choosenPurpose,null);
+           // UserPurpose selectedColor = (UserPurpose)purpose;
+           // user.Purpose = selectedColor;
             // test.Text = user.Purpose.ToString();
         }
         #endregion

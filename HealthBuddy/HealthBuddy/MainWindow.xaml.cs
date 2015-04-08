@@ -24,6 +24,7 @@
     using HealthBuddy.Models;
     using HealthBuddy.Interfaces;
     using HealthBuddy.Enums;
+    using HealthBuddy.Exceptions;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -40,6 +41,8 @@
         private List<object> selectedTypeMeals = new List<object>();
         private HashSet<History> AllHistory = new HashSet<History>();
         private int userCalories = new int();
+        private string unhealthyExMessage = @"Do not eat this! It is NOT good for you! 
+Regards, your Healty Buddy  :* ";
 
         IEnumerable<string> fullMealList = context.Appetisers.Select(x => x.Name).ToList()
                                   .Concat(context.Breakfasts.Select(x => x.Name).ToList())
@@ -330,9 +333,15 @@
 
             var first = GetMealToCompare(firstMealString);
             var second = GetMealToCompare(secondMealString);
-            if (first > second) MessageBox.Show(@"New Unhealty Exeption(should be implemented here). 
-Do not eat this! It is NOT good for you! 
-Regards, your Healty Buddy  :* ");
+            try
+            {
+                if (first > second) throw new UnHealthyException(unhealthyExMessage);             
+            }
+            catch (Exception ex)
+            {                
+                MessageBox.Show(ex.Message);
+            }
+             
         }
 
         private void SecondComparer_Click(object sender, RoutedEventArgs e)
@@ -342,9 +351,14 @@ Regards, your Healty Buddy  :* ");
 
             var first = GetMealToCompare(firstMealString);
             var second = GetMealToCompare(secondMealString);
-            if (first < second) MessageBox.Show(@"New Unhealty Exeption(should be implemented here). 
-Do not eat this! It is NOT good for you! 
-Regards, your Healty Buddy  :* ");
+            try
+            {
+                if (first < second) throw new UnHealthyException(unhealthyExMessage);    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }           
         }
         #region Ingredients Selection
         private void SelectFruit_Click(object sender, RoutedEventArgs e)

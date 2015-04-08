@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"		
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="HealthBuddy.MainWindow"		
 		HorizontalAlignment="Center" VerticalAlignment="Center"       
-        Title="MainWindow" Height="410" Width="545.897"
+        Title="Health Buddy" Height="410" Width="545.897"
     Icon="fruits.png">
     <Window.Resources>
         <Style x:Key="userInfoTextBlock" TargetType="{x:Type TextBlock}">

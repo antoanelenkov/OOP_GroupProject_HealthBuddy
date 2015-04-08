@@ -31,6 +31,15 @@
     public partial class MainWindow : Window
     {
         static HealthBuddyContext context = new HealthBuddyContext();
+      //  IEnumerable<Canvas> Windows = HealthBuddyWindow.Children.OfType<Canvas>();
+        List<object> selectedIngrediants = new List<object>();
+        List<object> unSelectedIngrediants = new List<object>() 
+                                { "Fruit", "Vegetables", "Nuts", "Legumes", 
+                                   "Grain", "Milk", "Fish", "Meat" };
+
+        private List<object> selectedTypeMeals = new List<object>();
+        private HashSet<History> AllHistory = new HashSet<History>();
+        private int userCalories = new int();
 
         IEnumerable<string> fullMealList = context.Appetisers.Select(x => x.Name).ToList()
                                   .Concat(context.Breakfasts.Select(x => x.Name).ToList())
@@ -112,39 +121,7 @@
             // test.Text = user.Purpose.ToString();
         }
         #endregion
-
-        // GO TO: 2nd window: Selection of foor ingredients
-        private void Proceed_Click(object sender, RoutedEventArgs e)
-        {
-            StartWindow.Visibility = System.Windows.Visibility.Hidden;
-            Menu.Visibility = System.Windows.Visibility.Visible;
-
-            WeightProfile.Text = user.Weight.ToString();
-            HeightProfile.Text = user.Height.ToString();
-            ListSelections.Text += string.Join("\n", selectedIngrediants);
-
-            Menu_MyMenu_Click(sender, e);
-        }
-
-        List<object> selectedIngrediants = new List<object>();
-        List<object> unSelectedIngrediants = new List<object>() { "Fruit", "Vegetables", "Nuts", "Legumes", "Grain", "Milk", "Fish", "Meat" };
-        // GO TO: MyMenu 
-        private void ProceedToProfile_Click(object sender, RoutedEventArgs e)
-        {
-        //    IEnumerable<System.Windows.Controls.CheckBox> childs =
-        //        FoodSelectionStack.Children.OfType<CheckBox>(); // the key for the baraka is here :D
-
-        //    //selectedIngrediants = childs.Where(x => x.IsChecked == true).Select(x => x.Content).ToList();
-        //    //unSelectedIngrediants = childs.Where(x => x.IsChecked == false).Select(x => x.Content).ToList();
-
-        //    FoodSelectionWindow.Visibility = System.Windows.Visibility.Hidden;
-        //    Menu.Visibility = System.Windows.Visibility.Visible;
-        }
-
-        private List<object> selectedTypeMeals = new List<object>();
-        private HashSet<History> AllHistory = new HashSet<History>();
-        private int userCalories = new int();
-
+        
         private void Generate_Menu_Button_Click(object sender, RoutedEventArgs e)
         {
             IEnumerable<System.Windows.Controls.CheckBox> childs =
@@ -272,42 +249,51 @@
             }
         }
 
-        private void Menu_Profile_Click(object sender, RoutedEventArgs e)
-        {
-            Profile.Visibility = System.Windows.Visibility.Visible;
-            Menu.Visibility = System.Windows.Visibility.Hidden;
-        }
-
+        #region Switch Windows
         private void Menu_MyMenu_Click(object sender, RoutedEventArgs e)
         {
-            Profile.Visibility = System.Windows.Visibility.Hidden;
-            Icompare.Visibility = System.Windows.Visibility.Hidden;
-            Menu.Visibility = System.Windows.Visibility.Visible;
-            if (user.Gender == UserGender.Male)
-            {
-                MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(user.Weight, user.Height, user.Age, UserPurpose.Keep_Weight);
-                userCalories = calcCalories.CalculateCalories();
-            }
-            else if (user.Gender == UserGender.Female)
-            {
-                WomanCaloriesCalculator calcCalories = new WomanCaloriesCalculator(user.Weight, user.Height, user.Age, UserPurpose.Keep_Weight);
-                userCalories = calcCalories.CalculateCalories();
-            }
-            userCaloriesInfo.Text = "Your calories:  " + userCalories;
+            var Windows = HealthBuddyWindow.Children.OfType<Canvas>();
+            Engine.InteractionManager.SwitchToWindow(Windows,Menu);
+            userCalories = Engine.InteractionManager.CalculateUserCalories(user, userCalories, userCaloriesInfo);
         }
-
+        
         private void Menu_ICompare_Click(object sender, RoutedEventArgs e)
         {
-            Icompare.Visibility = System.Windows.Visibility.Visible;
-            Profile.Visibility = System.Windows.Visibility.Hidden;
+            var Windows = HealthBuddyWindow.Children.OfType<Canvas>();
+            Engine.InteractionManager.SwitchToWindow(Windows,Icompare);
         }
 
+        private void Menu_Profile_Click(object sender, RoutedEventArgs e)
+        {
+            var Windows = HealthBuddyWindow.Children.OfType<Canvas>();
+            Engine.InteractionManager.SwitchToWindow(Windows, Profile);
+        }
+
+        private void ProceedToProfile_Click(object sender, RoutedEventArgs e)
+        {
+            //    IEnumerable<System.Windows.Controls.CheckBox> childs =
+            //        FoodSelectionStack.Children.OfType<CheckBox>(); // the key for the baraka is here :D
+
+            //    //selectedIngrediants = childs.Where(x => x.IsChecked == true).Select(x => x.Content).ToList();
+            //    //unSelectedIngrediants = childs.Where(x => x.IsChecked == false).Select(x => x.Content).ToList();
+
+            //    FoodSelectionWindow.Visibility = System.Windows.Visibility.Hidden;
+            //    Menu.Visibility = System.Windows.Visibility.Visible;
+        }
+        private void Proceed_Click(object sender, RoutedEventArgs e)
+        {
+            WeightProfile.Text = user.Weight.ToString();
+            HeightProfile.Text = user.Height.ToString();
+            ListSelections.Text += string.Join("\n", selectedIngrediants);
+
+            Menu_MyMenu_Click(sender, e);
+        }
+        #endregion
+        
         private void CompareMeals_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Meal first = FirstFoodCombo.SelectedValue as Meal;  
-                // Meal second = SecondFoodCombo.SelectedValue as Meal;
                 FirstComparer.Visibility = System.Windows.Visibility.Visible;
                 SecondComparer.Visibility = System.Windows.Visibility.Visible;
 
@@ -380,7 +366,7 @@ Regards, your Healty Buddy  :* ");
 Do not eat this! It is NOT good for you! 
 Regards, your Healty Buddy  :* ");
         }
-
+        #region Ingredients Selection
         private void SelectFruit_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Fruit selected!");
@@ -495,5 +481,6 @@ Regards, your Healty Buddy  :* ");
                 unSelectedIngrediants.Remove("Meat");
             }
         }
+        #endregion
     }
 }

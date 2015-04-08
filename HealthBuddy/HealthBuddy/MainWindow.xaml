@@ -83,7 +83,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid >
+    <Grid Name="HealthBuddyWindow">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>

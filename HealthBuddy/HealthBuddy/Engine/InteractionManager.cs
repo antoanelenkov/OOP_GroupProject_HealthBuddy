@@ -1,9 +1,41 @@
 ﻿namespace HealthBuddy.Engine
 {
+    using System.Windows.Controls;
+
+    using HealthBuddy.Calculator;
+    using HealthBuddy.Enums;
     using HealthBuddy.Models;
+    using System.Collections.Generic;    
 
     public class InteractionManager
     {
+        public static void SwitchToWindow(IEnumerable<Canvas> windowsCollection, Canvas windowToShow)
+        {
+            foreach (var page in windowsCollection)
+            {
+                if (page.Name != windowToShow.Name)
+                {
+                    page.Visibility = System.Windows.Visibility.Hidden;
+                }
+                windowToShow.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
+        public static int CalculateUserCalories(User user, int userCalories, TextBlock userCaloriesInfo)
+        {
+            if (user.Gender == UserGender.Male)
+            {
+                MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(user.Weight, user.Height, user.Age, UserPurpose.Keep_Weight);
+                userCalories = calcCalories.CalculateCalories();
+            }
+            else if (user.Gender == UserGender.Female)
+            {
+                WomanCaloriesCalculator calcCalories = new WomanCaloriesCalculator(user.Weight, user.Height, user.Age, UserPurpose.Keep_Weight);
+                userCalories = calcCalories.CalculateCalories();
+            }
+            userCaloriesInfo.Text = "Your calories:  " + userCalories;
+            return userCalories;
+        }
 
         public static Meal ConvertToTypeMeal(Meal meal, string type)
         {
@@ -32,7 +64,7 @@
                                        meal.Portion_Size, meal.Calories_Per_Portions, meal.Ingredients);
 
                 default: return new Dessert();                   
-            }
+            }            
         }       
     }
 }

@@ -1,5 +1,3 @@
-using HealthBuddy.Models;
-
 namespace HealthBuddy
 {
     using HealthBuddy.Migrations;
@@ -7,14 +5,16 @@ namespace HealthBuddy
     using System.Data.Entity;
     using System.Linq;
 
+    using HealthBuddy.Models;
+
     public class HealthBuddyContext : DbContext
     {
-        
+
         public HealthBuddyContext()
             : base("HealthBuddyContext")
         {
-           Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthBuddyContext, Configuration>());
-       //  Database.SetInitializer(new DropCreateDatabaseAlways<HealthBuddyContext>());    
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HealthBuddyContext, Configuration>());
+            //  Database.SetInitializer(new DropCreateDatabaseAlways<HealthBuddyContext>());    
 
         }
 

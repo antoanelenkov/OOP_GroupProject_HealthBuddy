@@ -5,14 +5,13 @@
     public class Main : Meal
     {
         public Main()
-            :base()
+            : base()
         {
-
         }
+
         public Main(string name, decimal calories, decimal proteins, decimal carbs, decimal fats, decimal portionSize, decimal caloriesPerPortion, string ingredients)
-            :base(name, calories, proteins, carbs, fats, portionSize, caloriesPerPortion, ingredients)
+            : base(name, calories, proteins, carbs, fats, portionSize, caloriesPerPortion, ingredients)
         {
-            
         }
     }
 }

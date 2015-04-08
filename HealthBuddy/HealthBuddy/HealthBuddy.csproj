@@ -66,7 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Calculator\DietCalculator.cs" />
+    <Compile Include="Calculator\DietCalculator.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Calculator\MenCaloriesCalculator.cs" />
     <Compile Include="Calculator\MenDietCalculator.cs" />
     <Compile Include="Calculator\MenWaterNeedsCalculator.cs" />

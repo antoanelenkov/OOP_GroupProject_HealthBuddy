@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HealthBuddy.Models;
-using Microsoft.SolverFoundation.Common;
-using Microsoft.SolverFoundation.Solvers;
-using Microsoft.SolverFoundation.Services;
-using HealthBuddy.Interfaces;
-
-namespace HealthBuddy
+﻿namespace HealthBuddy
 {
-    class SimplexMealGenerator : ISimplexMealCalculator
+    using System;
+    using System.Collections.Generic;
+
+    using Microsoft.SolverFoundation.Common;
+    using Microsoft.SolverFoundation.Solvers;
+    using Microsoft.SolverFoundation.Services;
+
+    using HealthBuddy.Models;
+    using HealthBuddy.Interfaces;
+
+    internal class SimplexMealGenerator : ISimplexMealCalculator
     {
-        List<Meal> meals;
-        List<int> mealPortions;
+        private List<Meal> meals;
+        private List<int> mealPortions;
         private int calories;
         private int proteins;
         private int carbohydrates;
         private int fats;
+
         public SimplexMealGenerator(List<Meal> Meals, int Calories = 0, int Proteins = 10, int Carbohydrates = 80, int Fats = 10)
         {
             this.meals = Meals;
@@ -27,16 +27,19 @@ namespace HealthBuddy
             carbohydrates = Carbohydrates;
             fats = Fats;
         }
+
         public List<Meal> Meals
         {
             get { return this.meals; }
             set { this.meals = value; }
         }
+
         public List<int> MealPortions
         {
             get { return this.mealPortions; }
             set { this.mealPortions = value; }
         }
+
         public int Calories
         {
             get { return this.calories; }
@@ -48,6 +51,7 @@ namespace HealthBuddy
             get { return this.proteins; }
             set { this.proteins = value; }
         }
+
         public int Carbohydrates
         {
             get { return this.carbohydrates; }
@@ -93,6 +97,7 @@ namespace HealthBuddy
                 solver.SetCoefficient(cost, portions, rand.Next(0, 100));
                 mealPortions.Add(portions);
             }
+
             solver.SetBounds(Calories, this.calories, this.calories);
             //solver.SetBounds(Proteins, 0, int.MaxValue);
             //solver.SetBounds(Carbohydrates, 0, int.MaxValue);

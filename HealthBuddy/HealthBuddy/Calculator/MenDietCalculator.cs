@@ -1,14 +1,8 @@
-﻿using HealthBuddy.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HealthBuddy.Calculator
+﻿namespace HealthBuddy.Calculator
 {
+    using HealthBuddy.Interfaces;
 
-    abstract class MenDietCalculator : DietCalculator, IDietCalculator
+   public abstract class MenDietCalculator : DietCalculator, IDietCalculator
     {
         public MenDietCalculator(double weight, double height, int age) : base(weight, height, age) { }
     }

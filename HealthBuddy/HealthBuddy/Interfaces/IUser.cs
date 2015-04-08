@@ -1,13 +1,9 @@
-﻿
-using HealthBuddy.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HealthBuddy.Interfaces
+﻿namespace HealthBuddy.Interfaces
 {
+    using System.Collections.Generic;
+
+    using HealthBuddy.Enums;
+
     public interface IUser
     {
         string Name { get; set; }
@@ -22,6 +18,6 @@ namespace HealthBuddy.Interfaces
 
         UserPurpose Purpose { get; set; }
 
-         List<string> Choosen_indigrediants { get; set; }
+        List<string> Choosen_indigrediants { get; set; }
     }
 }

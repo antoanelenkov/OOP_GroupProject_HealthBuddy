@@ -104,7 +104,7 @@
         </Menu>
 
         <Canvas   x:Name="StartWindow" 
-			Visibility="Hidden"
+			Visibility="Visible"
 			Background="BlueViolet">
             <TextBlock  Text="Hello Buddy,"
 				HorizontalAlignment="Left" 
@@ -268,7 +268,7 @@
                    />
 
         </Canvas>
-        <Canvas x:Name="Menu" Visibility="Visible"
+        <Canvas x:Name="Menu" Visibility="Hidden"
 			Background="#FFE039"                
 			Margin="0,27,0,0">
             <StackPanel x:Name="MenuInfo"
@@ -570,6 +570,14 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
+            <TextBlock Name="userCaloriesInfo"
+                       FontWeight="Bold"
+                Canvas.Left="351" 
+                TextWrapping="Wrap"
+                Text="Your calories:  " 
+                Canvas.Top="159" 
+                Height="21" 
+                Width="178"/>
 
         </Canvas>
         <Canvas x:Name="Exercises" Visibility="Hidden"
@@ -655,7 +663,7 @@
 				Canvas.Top="115" 
 				Width="25"                   
                    />
-            
+
         </Canvas>
 
     </Grid>

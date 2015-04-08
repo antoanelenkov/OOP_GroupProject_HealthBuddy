@@ -1,12 +1,7 @@
-﻿using HealthBuddy.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HealthBuddy.Engine
+﻿namespace HealthBuddy.Engine
 {
+    using HealthBuddy.Models;
+
     public class InteractionManager
     {
 
@@ -36,11 +31,8 @@ namespace HealthBuddy.Engine
                     return new Soup(meal.Name, meal.Calories, meal.Proteins, meal.Carbohydrates, meal.Fats,
                                        meal.Portion_Size, meal.Calories_Per_Portions, meal.Ingredients);
 
-                default: return new Dessert();
-                   
+                default: return new Dessert();                   
             }
-        }
-
-       
+        }       
     }
 }

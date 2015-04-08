@@ -1,12 +1,12 @@
 namespace HealthBuddy.Migrations
 {
-    using HealthBuddy.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Collections.Generic;
 
+    using HealthBuddy.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<HealthBuddy.HealthBuddyContext>
     {
@@ -18,19 +18,6 @@ namespace HealthBuddy.Migrations
 
         protected override void Seed(HealthBuddy.HealthBuddyContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-            
             // TODO: Delete Testing Salads and add ones with real values
             context.Salads.AddOrUpdate(
                 record => record.Name,
@@ -93,14 +80,14 @@ namespace HealthBuddy.Migrations
                    new Main { Name = "smoked haddock", Calories = 119m, Carbohydrates = 27.4m, Proteins = 0m, Fats = 1m, Portion_Size = 200m, Calories_Per_Portions = 237.2m, Ingredients = "fish" },
                    new Main { Name = "smoked carp", Calories = 164m, Carbohydrates = 24m, Proteins = 0m, Fats = 7.5m, Portion_Size = 200m, Calories_Per_Portions = 327m, Ingredients = "fish" },
                    new Main { Name = "cooked carp", Calories = 135m, Carbohydrates = 19m, Proteins = 0m, Fats = 6.5m, Portion_Size = 200m, Calories_Per_Portions = 269m, Ingredients = "fish" },
-                 //  new Main { Name = "medium boiled egg", Calories = 156m, Carbohydrates = 14m, Proteins = 1.2m, Fats = 10.6m, Portion_Size = 50m, Calories_Per_Portions = 78.1m, Ingredients = "milk" },
+                //  new Main { Name = "medium boiled egg", Calories = 156m, Carbohydrates = 14m, Proteins = 1.2m, Fats = 10.6m, Portion_Size = 50m, Calories_Per_Portions = 78.1m, Ingredients = "milk" },
                    new Main { Name = "medium tomato", Calories = 25m, Carbohydrates = 1.1m, Proteins = 4.5m, Fats = 0.3m, Portion_Size = 123m, Calories_Per_Portions = 30.873m, Ingredients = "vegetables" },
                    new Main { Name = "half cucumber ", Calories = 17m, Carbohydrates = 0.6m, Proteins = 3.5m, Fats = 0.1m, Portion_Size = 150m, Calories_Per_Portions = 25.95m, Ingredients = "vegetables" },
                    new Main { Name = "baked sweet potato", Calories = 101m, Carbohydrates = 2.2m, Proteins = 22.5m, Fats = 0.2m, Portion_Size = 150m, Calories_Per_Portions = 150.9m, Ingredients = "vegetables" },
                    new Main { Name = "baked potato", Calories = 127m, Carbohydrates = 3.2m, Proteins = 28m, Fats = 0.2m, Portion_Size = 270m, Calories_Per_Portions = 341.82m, Ingredients = "vegetables" },
-                  // new Main { Name = "almonds", Calories = 644m, Carbohydrates = 22.9m, Proteins = 23.4m, Fats = 51m, Portion_Size = 50m, Calories_Per_Portions = 322.1m, Ingredients = "nuts" },
-                 //  new Main { Name = "walnuts", Calories = 615m, Carbohydrates = 15.2m, Proteins = 13.7m, Fats = 55.5m, Portion_Size = 50m, Calories_Per_Portions = 307.55m, Ingredients = "nuts" },
-                 //  new Main { Name = "hazelnuts", Calories = 717m, Carbohydrates = 15.2m, Proteins = 17.8m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 358.5m, Ingredients = "nuts" },
+                // new Main { Name = "almonds", Calories = 644m, Carbohydrates = 22.9m, Proteins = 23.4m, Fats = 51m, Portion_Size = 50m, Calories_Per_Portions = 322.1m, Ingredients = "nuts" },
+                //  new Main { Name = "walnuts", Calories = 615m, Carbohydrates = 15.2m, Proteins = 13.7m, Fats = 55.5m, Portion_Size = 50m, Calories_Per_Portions = 307.55m, Ingredients = "nuts" },
+                //  new Main { Name = "hazelnuts", Calories = 717m, Carbohydrates = 15.2m, Proteins = 17.8m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 358.5m, Ingredients = "nuts" },
                    new Main { Name = "cashew", Calories = 576m, Carbohydrates = 18m, Proteins = 27m, Fats = 44m, Portion_Size = 50m, Calories_Per_Portions = 288m, Ingredients = "nuts" },
                 //   new Main { Name = "walnuts", Calories = 673m, Carbohydrates = 15m, Proteins = 7m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 336.5m, Ingredients = "nuts" },
                 //   new Main { Name = "peanuts", Calories = 573m, Carbohydrates = 26m, Proteins = 7m, Fats = 49m, Portion_Size = 50m, Calories_Per_Portions = 286.5m, Ingredients = "nuts" },
@@ -133,18 +120,18 @@ namespace HealthBuddy.Migrations
                 new Breakfast { Name = "cup of grape", Calories = 81m, Carbohydrates = 0.8m, Proteins = 19m, Fats = 0.15m, Portion_Size = 150m, Calories_Per_Portions = 120.825m, Ingredients = "fruit" },
                 new Breakfast { Name = "piece of watermelon", Calories = 61m, Carbohydrates = 0.6m, Proteins = 14.1m, Fats = 0.25m, Portion_Size = 290m, Calories_Per_Portions = 177.045m, Ingredients = "fruit" },
                 new Breakfast { Name = "almonds", Calories = 644m, Carbohydrates = 22.9m, Proteins = 23.4m, Fats = 51m, Portion_Size = 50m, Calories_Per_Portions = 322.1m, Ingredients = "nuts" },
-               // new Breakfast { Name = "walnuts", Calories = 615m, Carbohydrates = 15.2m, Proteins = 13.7m, Fats = 55.5m, Portion_Size = 50m, Calories_Per_Portions = 307.55m, Ingredients = "nuts" },
+                // new Breakfast { Name = "walnuts", Calories = 615m, Carbohydrates = 15.2m, Proteins = 13.7m, Fats = 55.5m, Portion_Size = 50m, Calories_Per_Portions = 307.55m, Ingredients = "nuts" },
                 new Breakfast { Name = "hazelnuts", Calories = 717m, Carbohydrates = 15.2m, Proteins = 17.8m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 358.5m, Ingredients = "nuts" },
                 new Breakfast { Name = "cashew", Calories = 576m, Carbohydrates = 18m, Proteins = 27m, Fats = 44m, Portion_Size = 50m, Calories_Per_Portions = 288m, Ingredients = "nuts" },
                 new Breakfast { Name = "walnuts", Calories = 673m, Carbohydrates = 15m, Proteins = 7m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 336.5m, Ingredients = "nuts" },
                 new Breakfast { Name = "peanuts", Calories = 573m, Carbohydrates = 26m, Proteins = 7m, Fats = 49m, Portion_Size = 50m, Calories_Per_Portions = 286.5m, Ingredients = "nuts" },
-              //  new Breakfast { Name = "sunflower seeds", Calories = 571m, Carbohydrates = 22.8m, Proteins = 8.3m, Fats = 49.6m, Portion_Size = 50m, Calories_Per_Portions = 285.4m, Ingredients = "nuts" },
+                //  new Breakfast { Name = "sunflower seeds", Calories = 571m, Carbohydrates = 22.8m, Proteins = 8.3m, Fats = 49.6m, Portion_Size = 50m, Calories_Per_Portions = 285.4m, Ingredients = "nuts" },
                 new Breakfast { Name = "wheat bread", Calories = 244m, Carbohydrates = 7.1m, Proteins = 51.4m, Fats = 1.1m, Portion_Size = 50m, Calories_Per_Portions = 121.95m, Ingredients = "grain" },
                 new Breakfast { Name = "rye bread", Calories = 231m, Carbohydrates = 6.8m, Proteins = 48.3m, Fats = 1.2m, Portion_Size = 50m, Calories_Per_Portions = 115.6m, Ingredients = "grain" },
                 new Breakfast { Name = "brown bread", Calories = 243m, Carbohydrates = 8m, Proteins = 46.6m, Fats = 1.7m, Portion_Size = 50m, Calories_Per_Portions = 116.85m, Ingredients = "grain" }
 );
-            //#endregion
-            //#region Add Soups to DB
+            #endregion
+            #region Add Soups to DB
             context.Soups.AddOrUpdate(
                 record => record.Name,
                 new Soup { Name = "bean soup", Calories = 72m, Carbohydrates = 4m, Proteins = 10m, Fats = 1.8m, Portion_Size = 350m, Calories_Per_Portions = 252.7m, Ingredients = "legumes" },
@@ -160,8 +147,8 @@ namespace HealthBuddy.Migrations
                 new Soup { Name = "green beans soup", Calories = 68m, Carbohydrates = 3.2m, Proteins = 11.2m, Fats = 1.2m, Portion_Size = 350m, Calories_Per_Portions = 239.4m, Ingredients = "legumes" },
                 new Soup { Name = "shkembe soup", Calories = 84m, Carbohydrates = 16m, Proteins = 0m, Fats = 2.2m, Portion_Size = 350m, Calories_Per_Portions = 293.3m, Ingredients = "meat" }
 );
-            //#endregion
-            //#region Add Dessert to DB
+            #endregion
+            #region Add Dessert to DB
             context.Desserts.AddOrUpdate(
                 record => record.Name,
                 //new Dessert { Name = "whole milk", Calories = 64m, Carbohydrates = 3m, Proteins = 5m, Fats = 3.6m, Portion_Size = 200m, Calories_Per_Portions = 128.8m, Ingredients = "milk" },
@@ -185,7 +172,7 @@ namespace HealthBuddy.Migrations
             #region Add Liquid to DB
             context.Liquids.AddOrUpdate(
                 record => record.Name,
-               // new Liquid { Name = "cup of orange juice", Calories = 46, Carbohydrates = 0.6m, Proteins = 10.2m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" },
+                // new Liquid { Name = "cup of orange juice", Calories = 46, Carbohydrates = 0.6m, Proteins = 10.2m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" },
                 //new Liquid { Name = "piece of pineapple", Calories = 66, Carbohydrates = 0.7m, Proteins = 15.6m, Fats = 0.1m, Portion_Size = 170m, Calories_Per_Portions = 112.37m, Ingredients = "fruit" },
                 //new Liquid { Name = "cup of pineapple juice", Calories = 67, Carbohydrates = 0.5m, Proteins = 16m, Fats = 0.1m, Portion_Size = 250m, Calories_Per_Portions = 167.25m, Ingredients = "fruit" },
                new Liquid { Name = "cup of apple juice", Calories = 46m, Carbohydrates = 0.3m, Proteins = 10.5m, Fats = 0.3m, Portion_Size = 250m, Calories_Per_Portions = 114.75m, Ingredients = "fruit" }
@@ -197,12 +184,12 @@ namespace HealthBuddy.Migrations
                 new Appetiser { Name = "piece of cheddar cheese(kashkaval)", Calories = 434m, Carbohydrates = 26m, Proteins = 1.5m, Fats = 36m, Portion_Size = 50m, Calories_Per_Portions = 217m, Ingredients = "milk" },
                 new Appetiser { Name = "piece of feta cheese(sirene)", Calories = 296m, Carbohydrates = 16m, Proteins = 4m, Fats = 24m, Portion_Size = 50m, Calories_Per_Portions = 148m, Ingredients = "milk" },
                 new Appetiser { Name = "cup of cottage cheese", Calories = 103m, Carbohydrates = 12m, Proteins = 3.6m, Fats = 4.5m, Portion_Size = 210m, Calories_Per_Portions = 216.09m, Ingredients = "milk" },
-              //  new Appetiser { Name = "almonds", Calories = 644m, Carbohydrates = 22.9m, Proteins = 23.4m, Fats = 51m, Portion_Size = 50m, Calories_Per_Portions = 322.1m, Ingredients = "nuts" },
-              //  new Appetiser { Name = "walnuts", Calories = 615m, Carbohydrates = 15.2m, Proteins = 13.7m, Fats = 55.5m, Portion_Size = 50m, Calories_Per_Portions = 307.55m, Ingredients = "nuts" },
-              //  new Appetiser { Name = "hazelnuts", Calories = 717m, Carbohydrates = 15.2m, Proteins = 17.8m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 358.5m, Ingredients = "nuts" },
+                //  new Appetiser { Name = "almonds", Calories = 644m, Carbohydrates = 22.9m, Proteins = 23.4m, Fats = 51m, Portion_Size = 50m, Calories_Per_Portions = 322.1m, Ingredients = "nuts" },
+                //  new Appetiser { Name = "walnuts", Calories = 615m, Carbohydrates = 15.2m, Proteins = 13.7m, Fats = 55.5m, Portion_Size = 50m, Calories_Per_Portions = 307.55m, Ingredients = "nuts" },
+                //  new Appetiser { Name = "hazelnuts", Calories = 717m, Carbohydrates = 15.2m, Proteins = 17.8m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 358.5m, Ingredients = "nuts" },
                 new Appetiser { Name = "cashew", Calories = 576m, Carbohydrates = 18m, Proteins = 27m, Fats = 44m, Portion_Size = 50m, Calories_Per_Portions = 288m, Ingredients = "nuts" },
-             //   new Appetiser { Name = "walnuts", Calories = 673m, Carbohydrates = 15m, Proteins = 7m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 336.5m, Ingredients = "nuts" },
-             //   new Appetiser { Name = "peanuts", Calories = 573m, Carbohydrates = 26m, Proteins = 7m, Fats = 49m, Portion_Size = 50m, Calories_Per_Portions = 286.5m, Ingredients = "nuts" },
+                //   new Appetiser { Name = "walnuts", Calories = 673m, Carbohydrates = 15m, Proteins = 7m, Fats = 65m, Portion_Size = 50m, Calories_Per_Portions = 336.5m, Ingredients = "nuts" },
+                //   new Appetiser { Name = "peanuts", Calories = 573m, Carbohydrates = 26m, Proteins = 7m, Fats = 49m, Portion_Size = 50m, Calories_Per_Portions = 286.5m, Ingredients = "nuts" },
                 new Appetiser { Name = "sunflower seeds", Calories = 571m, Carbohydrates = 22.8m, Proteins = 8.3m, Fats = 49.6m, Portion_Size = 50m, Calories_Per_Portions = 285.4m, Ingredients = "nuts" }
 );
             #endregion

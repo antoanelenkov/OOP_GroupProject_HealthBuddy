@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HealthBuddy;
-using HealthBuddy.Interfaces;
-
-namespace HealthBuddy.Calculator
+﻿namespace HealthBuddy.Calculator
 {
+    using HealthBuddy.Interfaces;
+
     /// <summary>
     /// Calculates BMR by different formula depending on the gender
     /// </summary>
@@ -18,15 +12,20 @@ namespace HealthBuddy.Calculator
         private const double WEIGHT_COEF = 9.6;
         private const double HEIGHT_COEF = 1.8;
         private const double AGE_COEF = 4.7;
-        public UserPurpose Purpose { get; set; }
 
         public WomanCaloriesCalculator(double weight, double height, int age, UserPurpose purpose)
-            : base(weight, height, age) 
-         {
-             this.Purpose = purpose;
-         }
+            : base(weight, height, age)
+        {
+            this.Purpose = purpose;
+        }
 
-        public WomanCaloriesCalculator(double weight, double height, int age) : base(weight, height, age) { }
+        public WomanCaloriesCalculator(double weight, double height, int age)
+            : base(weight, height, age)
+        {
+            ;
+        }
+
+        public UserPurpose Purpose { get; set; }
 
         public int CalculateCalories()
         {

@@ -98,7 +98,6 @@
             return false;
         }
 
-
         public static bool Filter(Meal x, List<object> unSelectedIngrediants)
         {
             foreach (var ingredient in unSelectedIngrediants)
@@ -114,7 +113,7 @@
         public override string ToString()
         {
             var result = new StringBuilder();
-            
+
             result.AppendLine(string.Format("Calories: {0}", this.Calories));
             result.AppendLine(string.Format("Carbohydrates: {0}", this.Carbohydrates));
             result.AppendLine(string.Format("Proteins: {0}", this.Proteins));

@@ -1,29 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Data.Sql;
-using HealthBuddy.Calculator;
-using HealthBuddy.Models;
-using System.Data.SqlClient;
-using HealthBuddy.Interfaces;
-using HealthBuddy.Enums;
-
-namespace HealthBuddy
+﻿namespace HealthBuddy
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Sql;
+    using System.Data.SqlClient;
+    using System.Linq;
+    using System.Reflection;
+    using System.Runtime.Serialization;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Documents;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Navigation;
+    using System.Windows.Shapes;
+
+    using HealthBuddy.Calculator;
+    using HealthBuddy.Models;
+    using HealthBuddy.Interfaces;
+    using HealthBuddy.Enums;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -38,6 +39,7 @@ namespace HealthBuddy
                                   .Concat(context.Mains.Select(x => x.Name).ToList())
                                   .Concat(context.Salads.Select(x => x.Name).ToList())
                                   .Concat(context.Soups.Select(x => x.Name).ToList());
+
         public MainWindow()
         {
             InitializeComponent();
@@ -115,7 +117,13 @@ namespace HealthBuddy
         private void Proceed_Click(object sender, RoutedEventArgs e)
         {
             StartWindow.Visibility = System.Windows.Visibility.Hidden;
-            FoodSelectionWindow.Visibility = System.Windows.Visibility.Visible;
+            Menu.Visibility = System.Windows.Visibility.Visible;
+
+            WeightProfile.Text = user.Weight.ToString();
+            HeightProfile.Text = user.Height.ToString();
+            ListSelections.Text += string.Join("\n", selectedIngrediants);
+
+            Menu_MyMenu_Click(sender, e);
         }
 
         List<object> selectedIngrediants = new List<object>();
@@ -123,22 +131,19 @@ namespace HealthBuddy
         // GO TO: MyMenu 
         private void ProceedToProfile_Click(object sender, RoutedEventArgs e)
         {
-            IEnumerable<System.Windows.Controls.CheckBox> childs =
-                FoodSelectionStack.Children.OfType<CheckBox>(); // the key for the baraka is here :D
+        //    IEnumerable<System.Windows.Controls.CheckBox> childs =
+        //        FoodSelectionStack.Children.OfType<CheckBox>(); // the key for the baraka is here :D
 
-            //selectedIngrediants = childs.Where(x => x.IsChecked == true).Select(x => x.Content).ToList();
-            //unSelectedIngrediants = childs.Where(x => x.IsChecked == false).Select(x => x.Content).ToList();
+        //    //selectedIngrediants = childs.Where(x => x.IsChecked == true).Select(x => x.Content).ToList();
+        //    //unSelectedIngrediants = childs.Where(x => x.IsChecked == false).Select(x => x.Content).ToList();
 
-            FoodSelectionWindow.Visibility = System.Windows.Visibility.Hidden;
-            Menu.Visibility = System.Windows.Visibility.Visible;
-
-            WeightProfile.Text = user.Weight.ToString();
-            HeightProfile.Text = user.Height.ToString();
-            ListSelections.Text += string.Join("\n", selectedIngrediants);
+        //    FoodSelectionWindow.Visibility = System.Windows.Visibility.Hidden;
+        //    Menu.Visibility = System.Windows.Visibility.Visible;
         }
 
-        List<object> selectedTypeMeals = new List<object>();
-        HashSet<History> AllHistory = new HashSet<History>();
+        private List<object> selectedTypeMeals = new List<object>();
+        private HashSet<History> AllHistory = new HashSet<History>();
+        private int userCalories = new int();
 
         private void Generate_Menu_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -171,8 +176,15 @@ namespace HealthBuddy
                     }
                     filtredMeals = filtredMeals.Concat(test).ToList();
                 }
+                //TEST
 
-                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, 1875); // TODO: Set user's Calories
+                //User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());
+                //MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(person1.Weight, person1.Height, person1.Age, person1.Purpose);
+                //MenWaterNeedsCalculator calcWater = new MenWaterNeedsCalculator(person1.Weight, person1.Height, person1.Age);
+                //int caloriesOfperson1 = calcCalories.CalculateCalories();
+                //double waterOfperson1 = calcWater.CalculateWaterNeeds();
+                //TEST
+                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, userCalories); // TODO: Set user's Calories
                 simplex.Generate();
                 for (int i = 0; i < filtredMeals.Count; i++)
                 {
@@ -192,19 +204,20 @@ namespace HealthBuddy
 
                 // Add to History
                 var newHistory = new History();
-                newHistory.Date = (DateTime)Calendar.SelectedDate.Value == null ? DateTime.Now : Calendar.SelectedDate.Value; // TODO: Change with value from calendar
+                if (Calendar.SelectedDate.HasValue)
+                {
+                    newHistory.Date = Calendar.SelectedDate.Value;
+                }
+                else
+                {
+                    newHistory.Date = DateTime.Now.Date;
+                }// TODO: Change with value from calendar
                 newHistory.Menu = menuItems;
                 var date = Calendar.SelectedDate.Value;
                 AllHistory.Remove(AllHistory.Where(x => x.Date == date).Select(z => z).FirstOrDefault());
                 AllHistory.Add(newHistory);
 
-                //TEST
-                User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());
-                MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(person1.Weight, person1.Height, person1.Age, person1.Purpose);
-                MenWaterNeedsCalculator calcWater = new MenWaterNeedsCalculator(person1.Weight, person1.Height, person1.Age);
-                int caloriesOfperson1 = calcCalories.CalculateCalories();
-                double waterOfperson1 = calcWater.CalculateWaterNeeds();
-                //TEST
+
             }
             catch (Exception ex)
             {
@@ -268,14 +281,25 @@ namespace HealthBuddy
         private void Menu_MyMenu_Click(object sender, RoutedEventArgs e)
         {
             Profile.Visibility = System.Windows.Visibility.Hidden;
+            Icompare.Visibility = System.Windows.Visibility.Hidden;
             Menu.Visibility = System.Windows.Visibility.Visible;
+            if (user.Gender == UserGender.Male)
+            {
+                MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(user.Weight, user.Height, user.Age, UserPurpose.Keep_Weight);
+                userCalories = calcCalories.CalculateCalories();
+            }
+            else if (user.Gender == UserGender.Female)
+            {
+                WomanCaloriesCalculator calcCalories = new WomanCaloriesCalculator(user.Weight, user.Height, user.Age, UserPurpose.Keep_Weight);
+                userCalories = calcCalories.CalculateCalories();
+            }
+            userCaloriesInfo.Text = "Your calories:  " + userCalories;
         }
 
         private void Menu_ICompare_Click(object sender, RoutedEventArgs e)
         {
-
             Icompare.Visibility = System.Windows.Visibility.Visible;
-
+            Profile.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void CompareMeals_Click(object sender, RoutedEventArgs e)
@@ -296,14 +320,11 @@ namespace HealthBuddy
                 var uriSource = new Uri(@"Images\Passed.png", UriKind.Relative);
                 var uriSourceNot = new Uri(@"Images\NotPassed.png", UriKind.Relative);
 
-
                 if (first < second)
                 {
                     FirstComparerImage.Source = new BitmapImage(uriSource);
                     SecondComparerImage.Source = new BitmapImage(uriSourceNot);
-
                 }
-
                 else if (second < first)
                 {
                     FirstComparerImage.Source = new BitmapImage(uriSourceNot);
@@ -312,12 +333,11 @@ namespace HealthBuddy
                 else
                 {
                     FirstComparerImage.Source = new BitmapImage(uriSource);
-                    SecondComparerImage.Source = new BitmapImage(uriSource);                   
+                    SecondComparerImage.Source = new BitmapImage(uriSource);
                 }
 
                 TestCompareFirst.Content += first.ToString();
                 TestCompareSecond.Content += second.ToString();
-               
             }
             catch (Exception ex)
             {
@@ -329,7 +349,7 @@ namespace HealthBuddy
         {
             var first = context.Desserts.FirstOrDefault(x => x.Name == mealAsString) as Meal;
             if (first == null) first = context.Breakfasts.FirstOrDefault(x => x.Name == mealAsString);
-            // if (first == null) first = context.Appetisers.FirstOrDefault(x => x.Name == firstMealString); ???
+            // if (first == null) first = context.Appetisers.FirstOrDefault(x => x.Name == firstMealString); // TODO: ???
             if (first == null) first = context.Liquids.FirstOrDefault(x => x.Name == mealAsString);
             if (first == null) first = context.Mains.FirstOrDefault(x => x.Name == mealAsString);
             if (first == null) first = context.Salads.FirstOrDefault(x => x.Name == mealAsString);
@@ -348,6 +368,7 @@ namespace HealthBuddy
 Do not eat this! It is NOT good for you! 
 Regards, your Healty Buddy  :* ");
         }
+
         private void SecondComparer_Click(object sender, RoutedEventArgs e)
         {
             var firstMealString = FirstFoodCombo.SelectedValue as String;
@@ -368,7 +389,6 @@ Regards, your Healty Buddy  :* ");
                 selectedIngrediants.Remove("Fruit");
                 unSelectedIngrediants.Add("Fruit");
             }
-
             else
             {
                 selectedIngrediants.Add("Fruit");
@@ -383,7 +403,6 @@ Regards, your Healty Buddy  :* ");
                 selectedIngrediants.Remove("Vegetables");
                 unSelectedIngrediants.Add("Vegetables");
             }
-
             else
             {
                 selectedIngrediants.Add("Vegetables");
@@ -398,7 +417,6 @@ Regards, your Healty Buddy  :* ");
                 selectedIngrediants.Remove("Nuts");
                 unSelectedIngrediants.Add("Nuts");
             }
-
             else
             {
                 selectedIngrediants.Add("Nuts");
@@ -428,7 +446,6 @@ Regards, your Healty Buddy  :* ");
                 selectedIngrediants.Remove("Grain");
                 unSelectedIngrediants.Add("Grain");
             }
-
             else
             {
                 selectedIngrediants.Add("Grain");
@@ -443,7 +460,6 @@ Regards, your Healty Buddy  :* ");
                 selectedIngrediants.Remove("Milk");
                 unSelectedIngrediants.Add("Milk");
             }
-
             else
             {
                 selectedIngrediants.Add("Milk");
@@ -458,7 +474,6 @@ Regards, your Healty Buddy  :* ");
                 selectedIngrediants.Remove("Fish");
                 unSelectedIngrediants.Add("Fish");
             }
-
             else
             {
                 selectedIngrediants.Add("Fish");

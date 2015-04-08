@@ -98,10 +98,14 @@ Regards, your Healty Buddy  :* ";
             // TODO: Do this on group meeting 
             // throw new NotImplementedException("Still not implemented, do not choose purpose for the moment :) ");
            // var purpose = new object();
-            // purpose = (choosenPurpose.SelectedItem as PropertyInfo).GetValue(choosenPurpose,null);
-           // UserPurpose selectedColor = (UserPurpose)purpose;
-           // user.Purpose = selectedColor;
-            // test.Text = user.Purpose.ToString();
+           // var purpose = (choosenPurpose.SelectedItem as PropertyInfo).Name;
+           // var test =new  UserPurpose();
+           // var enumPurposeList = test.GetType().GetEnumValues();
+           //user.Purpose = enumPurposeList.
+            //UserPurpose selectedColor = new UserPurpose();
+            //var test = selectedColor.
+            //user.Purpose = test;
+            //test.Text = user.Purpose.ToString();
         }
         #endregion
         
@@ -115,8 +119,6 @@ Regards, your Healty Buddy  :* ";
 
             try
             {
-                // var context = new HealthBuddyContext();
-
                 var filtredMeals = new List<Meal>();
                 var menuItems = new List<KeyValuePair<Meal, int>>();
                 foreach (var meal in selectedTypeMeals)
@@ -136,22 +138,13 @@ Regards, your Healty Buddy  :* ";
                     }
                     filtredMeals = filtredMeals.Concat(test).ToList();
                 }
-                //TEST
-
-                //User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());
-                //MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(person1.Weight, person1.Height, person1.Age, person1.Purpose);
-                //MenWaterNeedsCalculator calcWater = new MenWaterNeedsCalculator(person1.Weight, person1.Height, person1.Age);
-                //int caloriesOfperson1 = calcCalories.CalculateCalories();
-                //double waterOfperson1 = calcWater.CalculateWaterNeeds();
-                //TEST
-                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, userCalories); // TODO: Set user's Calories
+               
+                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, userCalories); 
                 simplex.Generate();
                 for (int i = 0; i < filtredMeals.Count; i++)
                 {
                     if (simplex.MealPortions[i] != 0)
                     {
-                        // MessageBox.Show(string.Format("{0}:{1}", filtredMeals[i].Name, simplex.MealPortions[i])); // TODO: Remove
-                        //TODO: Save info from meniTems list in History (struct)
                         var menuItem = new KeyValuePair<Meal, int>(filtredMeals[i], simplex.MealPortions[i]);
                         menuItems.Add(menuItem);
                     }
@@ -176,8 +169,6 @@ Regards, your Healty Buddy  :* ";
                 var date = Calendar.SelectedDate.Value;
                 AllHistory.Remove(AllHistory.Where(x => x.Date == date).Select(z => z).FirstOrDefault());
                 AllHistory.Add(newHistory);
-
-
             }
             catch (Exception ex)
             {

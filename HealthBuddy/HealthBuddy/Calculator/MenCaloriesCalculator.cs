@@ -8,7 +8,7 @@
     /// Calculates BMR by different formula depending on the gender       (man)
     /// </summary>
     /// <returns></returns>
-    public class MenCaloriesCalculator : MenDietCalculator, ICaloriesCalculator
+    public class MenCaloriesCalculator : MenDietCalculator, ICaloriesCalculator, IDietCalculator
     {
         //since the progress of science is growing exponentially, tomorrow these constants could be different :)
         private const int START_COEF = 66;

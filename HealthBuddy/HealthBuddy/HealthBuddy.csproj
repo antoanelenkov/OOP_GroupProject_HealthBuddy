@@ -79,6 +79,7 @@
     <Compile Include="Engine\InteractionManager.cs" />
     <Compile Include="Enums\UserGender.cs" />
     <Compile Include="Enums\UserPurpose.cs" />
+    <Compile Include="Exceptions\UnHealthyException.cs" />
     <Compile Include="Interfaces\ICaloriesCalculator.cs" />
     <Compile Include="Interfaces\IDietCalculator.cs" />
     <Compile Include="Interfaces\IMeal.cs" />
@@ -130,7 +131,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Calculator\ClassDiagram1.cd" />
-    <None Include="FullClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -180,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="meat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

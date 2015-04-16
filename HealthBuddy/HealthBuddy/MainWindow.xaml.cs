@@ -24,6 +24,7 @@
     using HealthBuddy.Models;
     using HealthBuddy.Interfaces;
     using HealthBuddy.Enums;
+    using HealthBuddy.Exceptions;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -40,6 +41,8 @@
         private List<object> selectedTypeMeals = new List<object>();
         private HashSet<History> AllHistory = new HashSet<History>();
         private int userCalories = new int();
+        private string unhealthyExMessage = @"Do not eat this! It is NOT good for you! 
+Regards, your Healty Buddy  :* ";
 
         IEnumerable<string> fullMealList = context.Appetisers.Select(x => x.Name).ToList()
                                   .Concat(context.Breakfasts.Select(x => x.Name).ToList())
@@ -95,10 +98,14 @@
             // TODO: Do this on group meeting 
             // throw new NotImplementedException("Still not implemented, do not choose purpose for the moment :) ");
            // var purpose = new object();
-            // purpose = (choosenPurpose.SelectedItem as PropertyInfo).GetValue(choosenPurpose,null);
-           // UserPurpose selectedColor = (UserPurpose)purpose;
-           // user.Purpose = selectedColor;
-            // test.Text = user.Purpose.ToString();
+           // var purpose = (choosenPurpose.SelectedItem as PropertyInfo).Name;
+           // var test =new  UserPurpose();
+           // var enumPurposeList = test.GetType().GetEnumValues();
+           //user.Purpose = enumPurposeList.
+            //UserPurpose selectedColor = new UserPurpose();
+            //var test = selectedColor.
+            //user.Purpose = test;
+            //test.Text = user.Purpose.ToString();
         }
         #endregion
         
@@ -112,8 +119,6 @@
 
             try
             {
-                // var context = new HealthBuddyContext();
-
                 var filtredMeals = new List<Meal>();
                 var menuItems = new List<KeyValuePair<Meal, int>>();
                 foreach (var meal in selectedTypeMeals)
@@ -133,22 +138,13 @@
                     }
                     filtredMeals = filtredMeals.Concat(test).ToList();
                 }
-                //TEST
-
-                //User person1 = new User("Antoan", 24, UserGender.Male, 78, 180, UserPurpose.Loose_Weight, new List<string>());
-                //MenCaloriesCalculator calcCalories = new MenCaloriesCalculator(person1.Weight, person1.Height, person1.Age, person1.Purpose);
-                //MenWaterNeedsCalculator calcWater = new MenWaterNeedsCalculator(person1.Weight, person1.Height, person1.Age);
-                //int caloriesOfperson1 = calcCalories.CalculateCalories();
-                //double waterOfperson1 = calcWater.CalculateWaterNeeds();
-                //TEST
-                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, userCalories); // TODO: Set user's Calories
+               
+                SimplexMealGenerator simplex = new SimplexMealGenerator(filtredMeals, userCalories); 
                 simplex.Generate();
                 for (int i = 0; i < filtredMeals.Count; i++)
                 {
                     if (simplex.MealPortions[i] != 0)
                     {
-                        // MessageBox.Show(string.Format("{0}:{1}", filtredMeals[i].Name, simplex.MealPortions[i])); // TODO: Remove
-                        //TODO: Save info from meniTems list in History (struct)
                         var menuItem = new KeyValuePair<Meal, int>(filtredMeals[i], simplex.MealPortions[i]);
                         menuItems.Add(menuItem);
                     }
@@ -173,8 +169,6 @@
                 var date = Calendar.SelectedDate.Value;
                 AllHistory.Remove(AllHistory.Where(x => x.Date == date).Select(z => z).FirstOrDefault());
                 AllHistory.Add(newHistory);
-
-
             }
             catch (Exception ex)
             {
@@ -330,9 +324,15 @@
 
             var first = GetMealToCompare(firstMealString);
             var second = GetMealToCompare(secondMealString);
-            if (first > second) MessageBox.Show(@"New Unhealty Exeption(should be implemented here). 
-Do not eat this! It is NOT good for you! 
-Regards, your Healty Buddy  :* ");
+            try
+            {
+                if (first > second) throw new UnHealthyException(unhealthyExMessage);             
+            }
+            catch (Exception ex)
+            {                
+                MessageBox.Show(ex.Message);
+            }
+             
         }
 
         private void SecondComparer_Click(object sender, RoutedEventArgs e)
@@ -342,9 +342,14 @@ Regards, your Healty Buddy  :* ");
 
             var first = GetMealToCompare(firstMealString);
             var second = GetMealToCompare(secondMealString);
-            if (first < second) MessageBox.Show(@"New Unhealty Exeption(should be implemented here). 
-Do not eat this! It is NOT good for you! 
-Regards, your Healty Buddy  :* ");
+            try
+            {
+                if (first < second) throw new UnHealthyException(unhealthyExMessage);    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }           
         }
         #region Ingredients Selection
         private void SelectFruit_Click(object sender, RoutedEventArgs e)

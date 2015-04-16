@@ -2,7 +2,7 @@
 {
     using HealthBuddy.Interfaces;
 
-    class WomanWaterNeedsCalculator : WomenDietCalculator, IDietCalculator
+    public class WomanWaterNeedsCalculator : WomenDietCalculator, IDietCalculator
     {
         //very complicated calculations(empiric from my expirience :D)
         private const double WEIGHT_COEF = 2.63;

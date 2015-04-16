@@ -7,7 +7,7 @@
     using HealthBuddy.Models;
     using System.Collections.Generic;    
 
-    public class InteractionManager
+    public abstract class InteractionManager
     {
         public static void SwitchToWindow(IEnumerable<Canvas> windowsCollection, Canvas windowToShow)
         {
